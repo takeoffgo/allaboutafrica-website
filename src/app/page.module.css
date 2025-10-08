@@ -30,5 +30,7 @@
     font-weight: 300;
     letter-spacing: -1px;
     line-height: 0.9em;
+    color: white;
+    text-shadow: 0 0 15px var(--foreground);
   }
 }
