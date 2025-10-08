@@ -7,11 +7,11 @@ export default function Home() {
     <div>
       <div className={style.copy}>
         <h1>
-          All About Africa.
+          All About Africa
           <br />
-          All Heart.
+          All Heart
           <br />
-          All Coming Soon.
+          All Coming Soon
         </h1>
       </div>
       <Image

@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Playfair } from "next/font/google";
 
 import "./globals.css";
 
-const inter = Inter({
+const font = Playfair({
   subsets: ["latin"],
-  weight: ["900"],
+  weight: ["300"],
 });
 
 export const metadata: Metadata = {
@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.className}>
+    <html lang="en" className={font.className}>
       <body>{children}</body>
     </html>
   );
