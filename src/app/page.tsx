@@ -16,7 +16,7 @@ export default function Home() {
       </div>
       <Image
         className={style.image}
-        src="https://cdn.takeoffgo.com/eb8fad5e1a8975f10c8de8f9487b11c4"
+        src="https://cdn.takeoffgo.com/808c2f5788f686b0d3ee4160f8a12dbb"
         alt="All About Africa - Coming soon"
         width={5567}
         height={3711}
