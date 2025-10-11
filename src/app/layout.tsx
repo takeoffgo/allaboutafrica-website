@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Playfair } from "next/font/google";
 
 import "./globals.css";
+import PlausibleProvider from "next-plausible";
 
 const font = Playfair({
   subsets: ["latin"],
@@ -19,8 +20,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={font.className}>
-      <body>{children}</body>
-    </html>
+    <PlausibleProvider domain="allaboutafrica.au">
+      <html lang="en" className={font.className}>
+        <body>{children}</body>
+      </html>
+    </PlausibleProvider>
   );
 }
