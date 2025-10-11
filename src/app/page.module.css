@@ -24,6 +24,8 @@
   align-items: center;
   justify-content: center;
 
+  pointer-events: none;
+
   h1 {
     margin: 0;
     padding: 0;
@@ -33,5 +35,30 @@
     line-height: 0.9em;
     color: white;
     text-shadow: 0 0 15px var(--foreground);
+  }
+}
+
+.enquire {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 1rem;
+  text-align: right;
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+
+  p {
+    color: white;
+    text-shadow: 0 0 10px var(--foreground);
+    font-size: 1.25rem;
+    margin: 0;
+
+    a {
+      color: currentColor;
+      text-decoration: none;
+      border-bottom: 1px dotted currentColor;
+      margin-bottom: -2px;
+    }
   }
 }
