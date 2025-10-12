@@ -26,7 +26,11 @@ export default function Home() {
       <div className={style.enquire}>
         <p>Interested about partnering with us?</p>
         <p>
-          <a href="mailto:info@allaboutafrica.au?subject=Tell me more about All About Africa">
+          <a
+            href="https://rqo13.share.hsforms.com/2ZrXw0pG4TASFD_3lUpditw"
+            target="_blank"
+            rel="noopener noreferer"
+          >
             Let&apos;s Talk Africa
           </a>
         </p>
