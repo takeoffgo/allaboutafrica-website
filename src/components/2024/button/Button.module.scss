@@ -1,0 +1,28 @@
+.container {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  text-decoration: none;
+  color: currentColor;
+  background-color: transparent;
+
+  text-transform: uppercase;
+  display: inline-block;
+  line-height: 1;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.outlined {
+  padding: 12px 25px;
+  border-radius: 56px;
+  border: 1px solid currentColor;
+}
+
+.white {
+  padding: 12px 25px;
+  border-radius: 56px;
+  background-color: white;
+}

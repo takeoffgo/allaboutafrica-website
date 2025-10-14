@@ -1,0 +1,53 @@
+:root {
+  --font-body: "Spezia SemiMono", sans-serif;
+
+  --width-desktop: 1440px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: normal;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}
+
+.basic-columns {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 520px) {
+  .basic-columns {
+    flex-direction: column;
+  }
+}
+
+.is-amount {
+  font-feature-settings: "zero" 1;
+}

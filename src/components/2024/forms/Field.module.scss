@@ -1,0 +1,36 @@
+.container {
+  flex: 1;
+  box-sizing: content-box;
+
+  span {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    border-radius: 0;
+    background-color: white;
+    font-family: inherit;
+    font-size: 16px;
+    color: #2e292b;
+    -webkit-appearance: none;
+
+    padding: 8px 12px;
+
+    border: none;
+    display: block;
+
+    resize: none;
+  }
+
+  select {
+    background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' width='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position-x: calc(100% - 8px);
+    background-position-y: calc(100% / 2);
+  }
+}

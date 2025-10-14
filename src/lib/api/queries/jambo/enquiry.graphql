@@ -1,0 +1,5 @@
+mutation SubmitEnquiry($input: SubmitEnquiryInput!) {
+  submitEnquiry(input: $input) {
+    success
+  }
+}

@@ -1,0 +1,69 @@
+@media print {
+  @page {
+    size: A4;
+    margin: 1rem;
+  }
+
+  .is-hidden-print {
+    display: none !important;
+  }
+
+  .is-only-print {
+    display: block;
+  }
+
+  .is-page-break {
+    page-break-before: always;
+  }
+
+  .avoid-page-break {
+    page-break-inside: avoid;
+  }
+
+  .section {
+    padding: 1.5rem;
+  }
+  .hero.is-fullheight {
+    height: 50vh !important;
+    min-height: initial;
+  }
+}
+
+html.printable {
+  @import "./paper.scss";
+
+  @media screen {
+    body {
+      background-color: #fff;
+    }
+
+    .sheet {
+      min-height: 100vh;
+    }
+
+    .section.is-emphasised {
+      margin-top: 15vh;
+    }
+  }
+
+  .sheet {
+    display: flex;
+    flex-direction: column;
+
+    @media print {
+      height: 100vh;
+    }
+
+    .body {
+      flex: 1;
+    }
+  }
+
+  footer {
+    font-size: 14px;
+
+    code {
+      font-size: 14px;
+    }
+  }
+}

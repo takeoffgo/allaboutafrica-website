@@ -1,0 +1,22 @@
+query GetInvoice($id: UUID!) {
+  invoice: invoicePublic(id: $id) {
+    amount
+    amountDue
+    amountPaid
+    currency
+    due
+    id
+    invoiced
+    number
+    paid
+    summary
+    trip
+  }
+}
+
+mutation PayInvoice($invoice: UUID!, $token: String!, $amount: BigFloat) {
+  executePayment(input: { invoice: $invoice, token: $token, amount: $amount }) {
+    success
+    message
+  }
+}

@@ -1,0 +1,85 @@
+.container {
+  max-width: var(--width-desktop);
+  margin: 0 auto;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  background-color: #efefef;
+}
+
+.titleContainer {
+  flex: 1;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.title {
+  margin-left: 58px;
+
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+
+  span {
+    font-family: Albra, sans-serif;
+    font-size: 48px;
+    line-height: 0.8;
+    text-transform: uppercase;
+    font-weight: bold;
+    display: block;
+    width: 308px;
+  }
+}
+
+.brandMark {
+  height: 34px;
+  margin-top: 3px;
+}
+
+.content {
+  background-color: white;
+  flex: 1;
+  padding: 40px 40px;
+
+  p {
+    width: 558px;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .container {
+    flex-direction: column;
+    height: unset;
+  }
+  .titleContainer {
+    flex: unset;
+  }
+  .title {
+    margin: 40px 16px;
+
+    span {
+      font-size: 28px;
+      width: unset;
+    }
+  }
+
+  .brandMark {
+    height: 20px;
+    margin-top: 1px;
+  }
+
+  .content {
+    flex: unset;
+    padding: 24px 16px;
+
+    p {
+      width: unset;
+      font-size: 14px;
+    }
+  }
+}

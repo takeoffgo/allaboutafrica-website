@@ -4,6 +4,7 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [{ hostname: "cdn.takeoffgo.com" }],
   },
+  devIndicators: false,
   /* config options here */
 };
 

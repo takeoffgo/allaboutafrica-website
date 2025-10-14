@@ -1,0 +1,150 @@
+mutation AcceptQuote(
+  $key: String!
+  $name: String!
+  $email: String!
+  $date: String!
+) {
+  acceptQuote(input: { key: $key, name: $name, email: $email, date: $date }) {
+    success
+    message
+  }
+}
+
+query GetQuote($key: String!) {
+  quote: quotePublic(key: $key) {
+    id
+    status
+    start
+    duration
+    travellerCount
+    total
+    baseCurrency
+    inclusions
+    exclusions
+    expires
+    locked
+    hero {
+      title
+      subtitle
+      image {
+        hash
+      }
+    }
+    user {
+      lastName
+      firstName
+      email
+      phone
+      genderPreposition
+    }
+    trip {
+      name
+      agency {
+        name
+        logo {
+          hash
+        }
+      }
+      agencyMember {
+        lastName
+        firstName
+        phone
+        email
+        genderPreposition
+      }
+      tripFlights(orderBy: DEPARTURE_ASC) {
+        nodes {
+          id
+          arrival
+          carrier
+          departure
+          number
+          notes
+          departureAirport {
+            id
+            latitude
+            longitude
+            iata
+            icao
+            timezone
+            city
+            country {
+              name
+            }
+          }
+          arrivalAirport {
+            id
+            latitude
+            longitude
+            iata
+            icao
+            timezone
+            city
+            country {
+              name
+            }
+          }
+        }
+      }
+    }
+
+    days: quoteDaysByQuoteId(orderBy: SORT_ORDER_ASC) {
+      nodes {
+        id
+        date
+        sortOrder
+        activitySummary
+        activityDetail
+        accommodationId
+        quoteDayDestinationsByDayId(orderBy: SORT_ORDER_ASC) {
+          nodes {
+            sortOrder
+            destination {
+              id
+              name
+            }
+          }
+        }
+      }
+    }
+
+    accommodation: quoteAccommodationDetailsByQuoteId(orderBy: SORT_ORDER_ASC) {
+      nodes {
+        id
+        sortOrder
+        basis
+        confirmation
+        beverageInclusions
+        foodInclusions
+        roomType
+        property {
+          id
+          name
+          summary
+          latitude
+          longitude
+          heroMedia {
+            hash
+          }
+        }
+      }
+    }
+
+    legalDocuments: quoteLegalDocumentsByQuoteId(orderBy: SORT_ORDER_ASC) {
+      nodes {
+        id
+        sortOrder
+        legalDocument {
+          id
+          name
+        }
+      }
+    }
+  }
+}
+
+mutation TrackQuoteView($ip: String!, $key: String!, $viewType: String!) {
+  trackQuoteView(input: { ip: $ip, key: $key, viewType: $viewType }) {
+    success
+  }
+}

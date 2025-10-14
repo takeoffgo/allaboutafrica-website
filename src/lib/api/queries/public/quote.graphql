@@ -1,0 +1,17 @@
+mutation TrackQuoteView($input: TrackQuoteViewInput!) {
+  trackQuoteView(input: $input)
+}
+
+mutation PayInvoice($input: PayInvoiceInput!) {
+  payInvoice(input: $input) {
+    success
+    message
+  }
+}
+
+mutation AcceptQuote($input: AcceptQuoteInput!) {
+  acceptQuote(input: $input) {
+    success
+    message
+  }
+}
