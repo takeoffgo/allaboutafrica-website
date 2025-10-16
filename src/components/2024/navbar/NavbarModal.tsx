@@ -34,7 +34,7 @@ export function NavbarModal(props: Readonly<NavbarModalProps>) {
             ))}
           </nav>
           <p className={styles.copy}>
-            &copy; {new Date().getFullYear()} Take Off Go. All Rights Reserved
+            &copy; {new Date().getFullYear()} All About Africa. All Rights Reserved
           </p>
         </div>
       </div>

@@ -4,7 +4,7 @@ import React from "react";
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "Take Off Go",
+  title: "All About Africa",
   icons: "/square@150.png",
   formatDetection: {
     telephone: false,
@@ -34,6 +34,11 @@ const RootLayout: React.FC<React.PropsWithChildren> = async ({ children }) => {
           integrity="sha384-XxNLWSzCxOe/CFcHcAiJAZ7LarLmw3f4975gOO6QkxvULbGGNDoSOTzItGUG++Q+"
           crossOrigin="anonymous"
         />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"
+        />
+
         <Script
           defer
           data-domain="allaboutafrica.au"

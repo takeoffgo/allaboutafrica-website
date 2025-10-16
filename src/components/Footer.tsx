@@ -1,16 +1,16 @@
 import moment from "moment";
-import Link from "next/link";
+// import Link from "next/link";
 
 const Footer: React.FC = () => (
   <footer className="section container has-text-centered is-hidden-print is-uppercase">
     <ul>
       <li>
         <p className="heading">
-          Take Off Go, copyright {moment().format("YYYY")}. All rights reserved.
-          ABN <span className="is-amount">15 634 608 567</span>
+          All About Africa, copyright {moment().format("YYYY")}. All rights
+          reserved. ABN <span className="is-amount">81 691 636 914</span>
         </p>
       </li>
-      <li>
+      {/* <li>
         <Link href="/legal/website-terms" className="heading">
           Terms and conditions
         </Link>
@@ -29,7 +29,7 @@ const Footer: React.FC = () => (
         >
           Powered by Pokko
         </a>
-      </li>
+      </li> */}
     </ul>
   </footer>
 );

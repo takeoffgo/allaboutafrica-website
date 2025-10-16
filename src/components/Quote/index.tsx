@@ -37,7 +37,7 @@ const QuoteComp: React.FC<QuoteProps> = ({
   const points = extractPoints(model);
   const providerName = model.quote?.trip?.agency
     ? model.quote?.trip?.agency.name
-    : "Take Off Go";
+    : "All About Africa";
 
   return (
     <>

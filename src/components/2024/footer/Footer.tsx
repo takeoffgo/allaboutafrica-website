@@ -15,10 +15,10 @@ export function Footer() {
           <Logo />
 
           <div className={styles.legal}>
-            <p>&copy; {new Date().getFullYear()} Take Off Go Pty Ltd</p>
+            <p>&copy; {new Date().getFullYear()} All About Africa Pty Ltd</p>
             <p>All Rights Reserved</p>
           </div>
-          <p className="is-amount">ABN 15 634 608 567</p>
+          <p className="is-amount">ABN 81 691 636 914</p>
         </div>
         <nav className={styles.navContainer}>
           <LinkButton href="/">Home</LinkButton>

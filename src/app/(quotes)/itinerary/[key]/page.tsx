@@ -23,7 +23,7 @@ export async function generateMetadata({
 
   const providerName = model.quote?.trip?.agency
     ? model.quote?.trip?.agency.name
-    : "Take Off Go";
+    : "All About Africa";
 
   return {
     title: [
