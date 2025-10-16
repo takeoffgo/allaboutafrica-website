@@ -5,7 +5,7 @@ import {
 } from "@/lib/api/jambo";
 import { jamboClient } from "@/lib/jambo";
 import { BrandLine, Content, Section } from "@/components/Bulma";
-import ReactHtmlParser from "@orrisroot/react-html-parser";
+import ReactHtmlParser from "html-react-parser";
 import Footer from "@/components/Footer";
 import { notFound } from "next/navigation";
 
