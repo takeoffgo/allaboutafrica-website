@@ -17,6 +17,7 @@
   "dependencies": {
     "@apollo/client": "^3.11.4",
     "@opennextjs/cloudflare": "1.3.0",
+    "@orrisroot/react-html-parser": "^2.1.2",
     "bulma": "^1.0.2",
     "classnames": "^2.5.1",
     "graphql": "^16.9.0",
