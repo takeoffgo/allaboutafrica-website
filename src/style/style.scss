@@ -1,10 +1,6 @@
 @use "sass:math";
 @import "~bulma";
 
-body {
-  --bulma-body-family: "Spezia SemiMono";
-}
-
 dl {
   &.indented {
     margin: 0.5rem 1rem;
@@ -262,7 +258,7 @@ img[onclick] {
 
 h1,
 h2 {
-  font-family: Albra, sans-serif;
+  // font-family: Albra, sans-serif;
   text-transform: uppercase;
 }
 
