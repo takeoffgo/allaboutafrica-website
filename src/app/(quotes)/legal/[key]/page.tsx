@@ -2,10 +2,8 @@ import { notFound } from "next/navigation";
 import LegalDocumentPage from "../doc/page";
 
 const knownLegalDocs: { [key: string]: string } = {
-  "privacy-policy": "b36aca91-20cc-4b81-aa0d-337d4f5cf963",
-  "website-terms": "29bc0110-5953-4506-bcbb-2d0e4611f6fb",
-  "booking-terms": "35e2fba7-3d36-4a3b-9dd0-73c07a6f76af",
-  complaints: "571d5c0f-80e3-4e80-9ea7-e3c3d62e690f",
+  "privacy-policy": "41d61690-f25e-4fe7-9882-91c3c7f2533c",
+  "booking-terms": "a073451f-1eb7-47d2-a3e9-81b39b9ed6cf",
 };
 
 export default async function KnownLegalDocumentPage(props: {
