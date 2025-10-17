@@ -1,5 +1,13 @@
 @use "sass:math";
-@import "~bulma";
+
+@use "bulma/sass" with (
+  $family-primary: "Inter, sans-serif",
+  $fullhd-enabled: false,
+  $widescreen-enabled: true
+);
+
+@import url("https://fonts.googleapis.com/css?family=Inter:400,700");
+
 
 dl {
   &.indented {
@@ -359,8 +367,6 @@ a.is-logo {
   text-decoration: none;
   color: inherit;
 }
-
-@import "../app/(quotes)/global.scss";
 
 .ele-collection__message {
   max-width: 300px;

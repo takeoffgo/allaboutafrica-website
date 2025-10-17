@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next/types";
 import React from "react";
-// import "./global.scss";
+import "@/style/style.scss";
 import Script from "next/script";
 
 export const metadata: Metadata = {
@@ -33,10 +33,6 @@ const RootLayout: React.FC<React.PropsWithChildren> = async ({ children }) => {
           href="https://pro.fontawesome.com/releases/v5.10.2/css/all.css"
           integrity="sha384-XxNLWSzCxOe/CFcHcAiJAZ7LarLmw3f4975gOO6QkxvULbGGNDoSOTzItGUG++Q+"
           crossOrigin="anonymous"
-        />
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"
         />
 
         <Script
