@@ -26,6 +26,7 @@ export type AcceptQuoteInput = {
   email: Scalars['String']['input'];
   key: Scalars['String']['input'];
   name: Scalars['String']['input'];
+  source: Scalars['String']['input'];
 };
 
 export type Account = {
@@ -314,7 +315,7 @@ export type Agency = {
   id: Scalars['UUID']['output'];
   /** Reads a single `MediaItem` that is related to this `Agency`. */
   logo?: Maybe<MediaItem>;
-  logoId: Scalars['UUID']['output'];
+  logoId?: Maybe<Scalars['UUID']['output']>;
   modified: Scalars['Datetime']['output'];
   name?: Maybe<Scalars['String']['output']>;
   /** Reads a single `Supplier` that is related to this `Agency`. */
@@ -378,6 +379,8 @@ export type AgencyFilter = {
   id?: InputMaybe<UuidFilter>;
   /** Filter by the object’s `logo` relation. */
   logo?: InputMaybe<MediaItemFilter>;
+  /** A related `logo` exists. */
+  logoExists?: InputMaybe<Scalars['Boolean']['input']>;
   /** Filter by the object’s `logoId` field. */
   logoId?: InputMaybe<UuidFilter>;
   /** Filter by the object’s `modified` field. */
@@ -2856,6 +2859,39 @@ export type CreateTestimonialPayloadTestimonialEdgeArgs = {
   orderBy?: InputMaybe<Array<TestimonialsOrderBy>>;
 };
 
+/** All input for the create `Timezone` mutation. */
+export type CreateTimezoneInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  /** The `Timezone` to be created by this mutation. */
+  timezone: TimezoneInput;
+};
+
+/** The output of our create `Timezone` mutation. */
+export type CreateTimezonePayload = {
+  __typename?: 'CreateTimezonePayload';
+  /**
+   * The exact same `clientMutationId` that was provided in the mutation input,
+   * unchanged and unused. May be used by a client to track mutations.
+   */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** Our root query field type. Allows us to run any query from our mutation payload. */
+  query?: Maybe<Query>;
+  /** The `Timezone` that was created by this mutation. */
+  timezone?: Maybe<Timezone>;
+  /** An edge for our `Timezone`. May be used by Relay 1. */
+  timezoneEdge?: Maybe<TimezonesEdge>;
+};
+
+
+/** The output of our create `Timezone` mutation. */
+export type CreateTimezonePayloadTimezoneEdgeArgs = {
+  orderBy?: InputMaybe<Array<TimezonesOrderBy>>;
+};
+
 /** All input for the create `TransactionImportBatch` mutation. */
 export type CreateTransactionImportBatchInput = {
   /**
@@ -5307,6 +5343,39 @@ export type DeleteTestimonialPayloadTestimonialEdgeArgs = {
   orderBy?: InputMaybe<Array<TestimonialsOrderBy>>;
 };
 
+/** All input for the `deleteTimezone` mutation. */
+export type DeleteTimezoneInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  ogcFid: Scalars['Int']['input'];
+};
+
+/** The output of our delete `Timezone` mutation. */
+export type DeleteTimezonePayload = {
+  __typename?: 'DeleteTimezonePayload';
+  /**
+   * The exact same `clientMutationId` that was provided in the mutation input,
+   * unchanged and unused. May be used by a client to track mutations.
+   */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  deletedTimezoneNodeId?: Maybe<Scalars['ID']['output']>;
+  /** Our root query field type. Allows us to run any query from our mutation payload. */
+  query?: Maybe<Query>;
+  /** The `Timezone` that was deleted by this mutation. */
+  timezone?: Maybe<Timezone>;
+  /** An edge for our `Timezone`. May be used by Relay 1. */
+  timezoneEdge?: Maybe<TimezonesEdge>;
+};
+
+
+/** The output of our delete `Timezone` mutation. */
+export type DeleteTimezonePayloadTimezoneEdgeArgs = {
+  orderBy?: InputMaybe<Array<TimezonesOrderBy>>;
+};
+
 /** All input for the `deleteTransactionImportBatch` mutation. */
 export type DeleteTransactionImportBatchInput = {
   /**
@@ -7742,6 +7811,7 @@ export type FakePublicQuoteAccommodationDetailForeignKey0QuoteAccommodationDetai
 export type FakePublicQuoteAccommodationDetailForeignKey0QuotePublicCreateInput = {
   accepted?: InputMaybe<Scalars['Datetime']['input']>;
   baseCurrency?: InputMaybe<Scalars['String']['input']>;
+  deposit?: InputMaybe<Scalars['BigFloat']['input']>;
   duration?: InputMaybe<Scalars['Int']['input']>;
   exclusions?: InputMaybe<Scalars['String']['input']>;
   expires?: InputMaybe<Scalars['Datetime']['input']>;
@@ -7810,6 +7880,7 @@ export type FakePublicQuoteDayForeignKey0QuoteDayCreateInput = {
 export type FakePublicQuoteDayForeignKey0QuotePublicCreateInput = {
   accepted?: InputMaybe<Scalars['Datetime']['input']>;
   baseCurrency?: InputMaybe<Scalars['String']['input']>;
+  deposit?: InputMaybe<Scalars['BigFloat']['input']>;
   duration?: InputMaybe<Scalars['Int']['input']>;
   exclusions?: InputMaybe<Scalars['String']['input']>;
   expires?: InputMaybe<Scalars['Datetime']['input']>;
@@ -7872,6 +7943,7 @@ export type FakePublicQuoteLegalDocumentForeignKey0QuoteLegalDocumentCreateInput
 export type FakePublicQuoteLegalDocumentForeignKey0QuotePublicCreateInput = {
   accepted?: InputMaybe<Scalars['Datetime']['input']>;
   baseCurrency?: InputMaybe<Scalars['String']['input']>;
+  deposit?: InputMaybe<Scalars['BigFloat']['input']>;
   duration?: InputMaybe<Scalars['Int']['input']>;
   exclusions?: InputMaybe<Scalars['String']['input']>;
   expires?: InputMaybe<Scalars['Datetime']['input']>;
@@ -7924,6 +7996,7 @@ export type FakePublicQuotePublicForeignKey0InverseInput = {
 export type FakePublicQuotePublicForeignKey0QuotePublicCreateInput = {
   accepted?: InputMaybe<Scalars['Datetime']['input']>;
   baseCurrency?: InputMaybe<Scalars['String']['input']>;
+  deposit?: InputMaybe<Scalars['BigFloat']['input']>;
   duration?: InputMaybe<Scalars['Int']['input']>;
   exclusions?: InputMaybe<Scalars['String']['input']>;
   expires?: InputMaybe<Scalars['Datetime']['input']>;
@@ -8027,6 +8100,7 @@ export type FakePublicQuotePublicForeignKey1QuoteHeroCreateInput = {
 export type FakePublicQuotePublicForeignKey1QuotePublicCreateInput = {
   accepted?: InputMaybe<Scalars['Datetime']['input']>;
   baseCurrency?: InputMaybe<Scalars['String']['input']>;
+  deposit?: InputMaybe<Scalars['BigFloat']['input']>;
   duration?: InputMaybe<Scalars['Int']['input']>;
   exclusions?: InputMaybe<Scalars['String']['input']>;
   expires?: InputMaybe<Scalars['Datetime']['input']>;
@@ -8078,6 +8152,7 @@ export type FakePublicQuotePublicForeignKey2InverseInput = {
 export type FakePublicQuotePublicForeignKey2QuotePublicCreateInput = {
   accepted?: InputMaybe<Scalars['Datetime']['input']>;
   baseCurrency?: InputMaybe<Scalars['String']['input']>;
+  deposit?: InputMaybe<Scalars['BigFloat']['input']>;
   duration?: InputMaybe<Scalars['Int']['input']>;
   exclusions?: InputMaybe<Scalars['String']['input']>;
   expires?: InputMaybe<Scalars['Datetime']['input']>;
@@ -11147,6 +11222,7 @@ export type FkPropertyCountryCountryIdPropertyCreateInput = {
   quoteDaysUsingId?: InputMaybe<QuoteDayPropertyIdFkeyInverseInput>;
   region?: InputMaybe<Scalars['String']['input']>;
   summary?: InputMaybe<Scalars['String']['input']>;
+  timezone?: InputMaybe<Scalars['String']['input']>;
   url?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -11238,6 +11314,7 @@ export type FkPropertyDestinationPropertyCreateInput = {
   quoteDaysUsingId?: InputMaybe<QuoteDayPropertyIdFkeyInverseInput>;
   region?: InputMaybe<Scalars['String']['input']>;
   summary?: InputMaybe<Scalars['String']['input']>;
+  timezone?: InputMaybe<Scalars['String']['input']>;
   url?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -11310,6 +11387,7 @@ export type FkPropertyMapPointMapPointIdPropertyCreateInput = {
   quoteDaysUsingId?: InputMaybe<QuoteDayPropertyIdFkeyInverseInput>;
   region?: InputMaybe<Scalars['String']['input']>;
   summary?: InputMaybe<Scalars['String']['input']>;
+  timezone?: InputMaybe<Scalars['String']['input']>;
   url?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -11389,6 +11467,7 @@ export type FkPropertyMediaGalleryGalleryIdPropertyCreateInput = {
   quoteDaysUsingId?: InputMaybe<QuoteDayPropertyIdFkeyInverseInput>;
   region?: InputMaybe<Scalars['String']['input']>;
   summary?: InputMaybe<Scalars['String']['input']>;
+  timezone?: InputMaybe<Scalars['String']['input']>;
   url?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -11469,6 +11548,7 @@ export type FkPropertyMediaItemHeroMediaIdPropertyCreateInput = {
   quoteDaysUsingId?: InputMaybe<QuoteDayPropertyIdFkeyInverseInput>;
   region?: InputMaybe<Scalars['String']['input']>;
   summary?: InputMaybe<Scalars['String']['input']>;
+  timezone?: InputMaybe<Scalars['String']['input']>;
   url?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -11618,6 +11698,7 @@ export type FkQuoteAccommodationDetailPropertyPropertyIdPropertyCreateInput = {
   quoteDaysUsingId?: InputMaybe<QuoteDayPropertyIdFkeyInverseInput>;
   region?: InputMaybe<Scalars['String']['input']>;
   summary?: InputMaybe<Scalars['String']['input']>;
+  timezone?: InputMaybe<Scalars['String']['input']>;
   url?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -17561,6 +17642,8 @@ export type Mutation = {
   createSupplierInvoice?: Maybe<CreateSupplierInvoicePayload>;
   /** Creates a single `Testimonial`. */
   createTestimonial?: Maybe<CreateTestimonialPayload>;
+  /** Creates a single `Timezone`. */
+  createTimezone?: Maybe<CreateTimezonePayload>;
   /** Creates a single `Transaction`. */
   createTransaction?: Maybe<CreateTransactionPayload>;
   /** Creates a single `TransactionImportBatch`. */
@@ -17670,6 +17753,8 @@ export type Mutation = {
   deleteSupplierInvoice?: Maybe<DeleteSupplierInvoicePayload>;
   /** Deletes a single `Testimonial` using a unique key. */
   deleteTestimonial?: Maybe<DeleteTestimonialPayload>;
+  /** Deletes a single `Timezone` using a unique key. */
+  deleteTimezone?: Maybe<DeleteTimezonePayload>;
   /** Deletes a single `Transaction` using a unique key. */
   deleteTransaction?: Maybe<DeleteTransactionPayload>;
   /** Deletes a single `TransactionImportBatch` using a unique key. */
@@ -17788,6 +17873,8 @@ export type Mutation = {
   updateSupplierInvoice?: Maybe<UpdateSupplierInvoicePayload>;
   /** Updates a single `Testimonial` using a unique key and a patch. */
   updateTestimonial?: Maybe<UpdateTestimonialPayload>;
+  /** Updates a single `Timezone` using a unique key and a patch. */
+  updateTimezone?: Maybe<UpdateTimezonePayload>;
   /** Updates a single `Transaction` using a unique key and a patch. */
   updateTransaction?: Maybe<UpdateTransactionPayload>;
   /** Updates a single `TransactionImportBatch` using a unique key and a patch. */
@@ -18073,6 +18160,12 @@ export type MutationCreateSupplierInvoiceArgs = {
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationCreateTestimonialArgs = {
   input: CreateTestimonialInput;
+};
+
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationCreateTimezoneArgs = {
+  input: CreateTimezoneInput;
 };
 
 
@@ -18403,6 +18496,12 @@ export type MutationDeleteSupplierInvoiceArgs = {
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationDeleteTestimonialArgs = {
   input: DeleteTestimonialInput;
+};
+
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationDeleteTimezoneArgs = {
+  input: DeleteTimezoneInput;
 };
 
 
@@ -18781,6 +18880,12 @@ export type MutationUpdateSupplierInvoiceArgs = {
 /** The root mutation type which contains root level fields which mutate data. */
 export type MutationUpdateTestimonialArgs = {
   input: UpdateTestimonialInput;
+};
+
+
+/** The root mutation type which contains root level fields which mutate data. */
+export type MutationUpdateTimezoneArgs = {
+  input: UpdateTimezoneInput;
 };
 
 
@@ -19846,6 +19951,8 @@ export enum PropertiesOrderBy {
   RegionDesc = 'REGION_DESC',
   SummaryAsc = 'SUMMARY_ASC',
   SummaryDesc = 'SUMMARY_DESC',
+  TimezoneAsc = 'TIMEZONE_ASC',
+  TimezoneDesc = 'TIMEZONE_DESC',
   UrlAsc = 'URL_ASC',
   UrlDesc = 'URL_DESC'
 }
@@ -19890,6 +19997,7 @@ export type Property = {
   quoteDays: QuoteDaysConnection;
   region?: Maybe<Scalars['String']['output']>;
   summary?: Maybe<Scalars['String']['output']>;
+  timezone?: Maybe<Scalars['String']['output']>;
   url?: Maybe<Scalars['String']['output']>;
 };
 
@@ -19970,6 +20078,8 @@ export type PropertyCondition = {
   region?: InputMaybe<Scalars['String']['input']>;
   /** Checks for equality with the object’s `summary` field. */
   summary?: InputMaybe<Scalars['String']['input']>;
+  /** Checks for equality with the object’s `timezone` field. */
+  timezone?: InputMaybe<Scalars['String']['input']>;
   /** Checks for equality with the object’s `url` field. */
   url?: InputMaybe<Scalars['String']['input']>;
 };
@@ -20056,6 +20166,8 @@ export type PropertyFilter = {
   region?: InputMaybe<StringFilter>;
   /** Filter by the object’s `summary` field. */
   summary?: InputMaybe<StringFilter>;
+  /** Filter by the object’s `timezone` field. */
+  timezone?: InputMaybe<StringFilter>;
   /** Filter by the object’s `url` field. */
   url?: InputMaybe<StringFilter>;
 };
@@ -20093,6 +20205,7 @@ export type PropertyInput = {
   quoteDaysUsingId?: InputMaybe<QuoteDayPropertyIdFkeyInverseInput>;
   region?: InputMaybe<Scalars['String']['input']>;
   summary?: InputMaybe<Scalars['String']['input']>;
+  timezone?: InputMaybe<Scalars['String']['input']>;
   url?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -20178,6 +20291,7 @@ export type PropertyPatch = {
   quoteDaysUsingId?: InputMaybe<QuoteDayPropertyIdFkeyInverseInput>;
   region?: InputMaybe<Scalars['String']['input']>;
   summary?: InputMaybe<Scalars['String']['input']>;
+  timezone?: InputMaybe<Scalars['String']['input']>;
   url?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -20376,6 +20490,9 @@ export type Query = {
   testimonials?: Maybe<TestimonialsConnection>;
   /** Reads and enables pagination through a set of `Timeline`. */
   timelines?: Maybe<TimelinesConnection>;
+  timezone?: Maybe<Timezone>;
+  /** Reads and enables pagination through a set of `Timezone`. */
+  timezones?: Maybe<TimezonesConnection>;
   transaction?: Maybe<Transaction>;
   transactionImportBatch?: Maybe<TransactionImportBatch>;
   /** Reads and enables pagination through a set of `TransactionImportBatch`. */
@@ -21305,6 +21422,25 @@ export type QueryTimelinesArgs = {
 
 
 /** The root query type which gives access points into the data universe. */
+export type QueryTimezoneArgs = {
+  ogcFid: Scalars['Int']['input'];
+};
+
+
+/** The root query type which gives access points into the data universe. */
+export type QueryTimezonesArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  condition?: InputMaybe<TimezoneCondition>;
+  filter?: InputMaybe<TimezoneFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<TimezonesOrderBy>>;
+};
+
+
+/** The root query type which gives access points into the data universe. */
 export type QueryTransactionArgs = {
   id: Scalars['UUID']['input'];
 };
@@ -22174,6 +22310,8 @@ export enum QuoteAccommodationDetailsOrderBy {
   PropertyByPropertyIdRegionDesc = 'PROPERTY_BY_PROPERTY_ID__REGION_DESC',
   PropertyByPropertyIdSummaryAsc = 'PROPERTY_BY_PROPERTY_ID__SUMMARY_ASC',
   PropertyByPropertyIdSummaryDesc = 'PROPERTY_BY_PROPERTY_ID__SUMMARY_DESC',
+  PropertyByPropertyIdTimezoneAsc = 'PROPERTY_BY_PROPERTY_ID__TIMEZONE_ASC',
+  PropertyByPropertyIdTimezoneDesc = 'PROPERTY_BY_PROPERTY_ID__TIMEZONE_DESC',
   PropertyByPropertyIdUrlAsc = 'PROPERTY_BY_PROPERTY_ID__URL_ASC',
   PropertyByPropertyIdUrlDesc = 'PROPERTY_BY_PROPERTY_ID__URL_DESC',
   PropertyIdAsc = 'PROPERTY_ID_ASC',
@@ -22234,6 +22372,8 @@ export enum QuoteAccommodationDetailsOrderBy {
   QuotePublicByQuoteIdAcceptedDesc = 'QUOTE_PUBLIC_BY_QUOTE_ID__ACCEPTED_DESC',
   QuotePublicByQuoteIdBaseCurrencyAsc = 'QUOTE_PUBLIC_BY_QUOTE_ID__BASE_CURRENCY_ASC',
   QuotePublicByQuoteIdBaseCurrencyDesc = 'QUOTE_PUBLIC_BY_QUOTE_ID__BASE_CURRENCY_DESC',
+  QuotePublicByQuoteIdDepositAsc = 'QUOTE_PUBLIC_BY_QUOTE_ID__DEPOSIT_ASC',
+  QuotePublicByQuoteIdDepositDesc = 'QUOTE_PUBLIC_BY_QUOTE_ID__DEPOSIT_DESC',
   QuotePublicByQuoteIdDurationAsc = 'QUOTE_PUBLIC_BY_QUOTE_ID__DURATION_ASC',
   QuotePublicByQuoteIdDurationDesc = 'QUOTE_PUBLIC_BY_QUOTE_ID__DURATION_DESC',
   QuotePublicByQuoteIdExclusionsAsc = 'QUOTE_PUBLIC_BY_QUOTE_ID__EXCLUSIONS_ASC',
@@ -22900,6 +23040,7 @@ export type QuoteDayPropertyIdFkeyPropertyCreateInput = {
   quoteDaysUsingId?: InputMaybe<QuoteDayPropertyIdFkeyInverseInput>;
   region?: InputMaybe<Scalars['String']['input']>;
   summary?: InputMaybe<Scalars['String']['input']>;
+  timezone?: InputMaybe<Scalars['String']['input']>;
   url?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -23014,6 +23155,8 @@ export enum QuoteDaysOrderBy {
   PropertyByPropertyIdRegionDesc = 'PROPERTY_BY_PROPERTY_ID__REGION_DESC',
   PropertyByPropertyIdSummaryAsc = 'PROPERTY_BY_PROPERTY_ID__SUMMARY_ASC',
   PropertyByPropertyIdSummaryDesc = 'PROPERTY_BY_PROPERTY_ID__SUMMARY_DESC',
+  PropertyByPropertyIdTimezoneAsc = 'PROPERTY_BY_PROPERTY_ID__TIMEZONE_ASC',
+  PropertyByPropertyIdTimezoneDesc = 'PROPERTY_BY_PROPERTY_ID__TIMEZONE_DESC',
   PropertyByPropertyIdUrlAsc = 'PROPERTY_BY_PROPERTY_ID__URL_ASC',
   PropertyByPropertyIdUrlDesc = 'PROPERTY_BY_PROPERTY_ID__URL_DESC',
   PropertyIdAsc = 'PROPERTY_ID_ASC',
@@ -23098,6 +23241,8 @@ export enum QuoteDaysOrderBy {
   QuotePublicByQuoteIdAcceptedDesc = 'QUOTE_PUBLIC_BY_QUOTE_ID__ACCEPTED_DESC',
   QuotePublicByQuoteIdBaseCurrencyAsc = 'QUOTE_PUBLIC_BY_QUOTE_ID__BASE_CURRENCY_ASC',
   QuotePublicByQuoteIdBaseCurrencyDesc = 'QUOTE_PUBLIC_BY_QUOTE_ID__BASE_CURRENCY_DESC',
+  QuotePublicByQuoteIdDepositAsc = 'QUOTE_PUBLIC_BY_QUOTE_ID__DEPOSIT_ASC',
+  QuotePublicByQuoteIdDepositDesc = 'QUOTE_PUBLIC_BY_QUOTE_ID__DEPOSIT_DESC',
   QuotePublicByQuoteIdDurationAsc = 'QUOTE_PUBLIC_BY_QUOTE_ID__DURATION_ASC',
   QuotePublicByQuoteIdDurationDesc = 'QUOTE_PUBLIC_BY_QUOTE_ID__DURATION_DESC',
   QuotePublicByQuoteIdExclusionsAsc = 'QUOTE_PUBLIC_BY_QUOTE_ID__EXCLUSIONS_ASC',
@@ -24200,6 +24345,8 @@ export enum QuoteLegalDocumentsOrderBy {
   QuotePublicByQuoteIdAcceptedDesc = 'QUOTE_PUBLIC_BY_QUOTE_ID__ACCEPTED_DESC',
   QuotePublicByQuoteIdBaseCurrencyAsc = 'QUOTE_PUBLIC_BY_QUOTE_ID__BASE_CURRENCY_ASC',
   QuotePublicByQuoteIdBaseCurrencyDesc = 'QUOTE_PUBLIC_BY_QUOTE_ID__BASE_CURRENCY_DESC',
+  QuotePublicByQuoteIdDepositAsc = 'QUOTE_PUBLIC_BY_QUOTE_ID__DEPOSIT_ASC',
+  QuotePublicByQuoteIdDepositDesc = 'QUOTE_PUBLIC_BY_QUOTE_ID__DEPOSIT_DESC',
   QuotePublicByQuoteIdDurationAsc = 'QUOTE_PUBLIC_BY_QUOTE_ID__DURATION_ASC',
   QuotePublicByQuoteIdDurationDesc = 'QUOTE_PUBLIC_BY_QUOTE_ID__DURATION_DESC',
   QuotePublicByQuoteIdExclusionsAsc = 'QUOTE_PUBLIC_BY_QUOTE_ID__EXCLUSIONS_ASC',
@@ -24499,6 +24646,7 @@ export type QuotePublic = {
   __typename?: 'QuotePublic';
   accepted?: Maybe<Scalars['Datetime']['output']>;
   baseCurrency?: Maybe<Scalars['String']['output']>;
+  deposit?: Maybe<Scalars['BigFloat']['output']>;
   duration?: Maybe<Scalars['Int']['output']>;
   exclusions?: Maybe<Scalars['String']['output']>;
   expires?: Maybe<Scalars['Datetime']['output']>;
@@ -24572,6 +24720,8 @@ export type QuotePublicCondition = {
   accepted?: InputMaybe<Scalars['Datetime']['input']>;
   /** Checks for equality with the object’s `baseCurrency` field. */
   baseCurrency?: InputMaybe<Scalars['String']['input']>;
+  /** Checks for equality with the object’s `deposit` field. */
+  deposit?: InputMaybe<Scalars['BigFloat']['input']>;
   /** Checks for equality with the object’s `duration` field. */
   duration?: InputMaybe<Scalars['Int']['input']>;
   /** Checks for equality with the object’s `exclusions` field. */
@@ -24620,6 +24770,8 @@ export type QuotePublicFilter = {
   and?: InputMaybe<Array<QuotePublicFilter>>;
   /** Filter by the object’s `baseCurrency` field. */
   baseCurrency?: InputMaybe<StringFilter>;
+  /** Filter by the object’s `deposit` field. */
+  deposit?: InputMaybe<BigFloatFilter>;
   /** Filter by the object’s `duration` field. */
   duration?: InputMaybe<IntFilter>;
   /** Filter by the object’s `exclusions` field. */
@@ -24682,6 +24834,7 @@ export type QuotePublicFilter = {
 export type QuotePublicInput = {
   accepted?: InputMaybe<Scalars['Datetime']['input']>;
   baseCurrency?: InputMaybe<Scalars['String']['input']>;
+  deposit?: InputMaybe<Scalars['BigFloat']['input']>;
   duration?: InputMaybe<Scalars['Int']['input']>;
   exclusions?: InputMaybe<Scalars['String']['input']>;
   expires?: InputMaybe<Scalars['Datetime']['input']>;
@@ -24750,6 +24903,7 @@ export type QuotePublicOnQuotePublicForFakePublicQuotePublicForeignKey2UsingFake
 export type QuotePublicPatch = {
   accepted?: InputMaybe<Scalars['Datetime']['input']>;
   baseCurrency?: InputMaybe<Scalars['String']['input']>;
+  deposit?: InputMaybe<Scalars['BigFloat']['input']>;
   duration?: InputMaybe<Scalars['Int']['input']>;
   exclusions?: InputMaybe<Scalars['String']['input']>;
   expires?: InputMaybe<Scalars['Datetime']['input']>;
@@ -24830,6 +24984,8 @@ export enum QuotePublicsOrderBy {
   AcceptedDesc = 'ACCEPTED_DESC',
   BaseCurrencyAsc = 'BASE_CURRENCY_ASC',
   BaseCurrencyDesc = 'BASE_CURRENCY_DESC',
+  DepositAsc = 'DEPOSIT_ASC',
+  DepositDesc = 'DEPOSIT_DESC',
   DurationAsc = 'DURATION_ASC',
   DurationDesc = 'DURATION_DESC',
   ExclusionsAsc = 'EXCLUSIONS_ASC',
@@ -27014,6 +27170,89 @@ export enum TimelinesOrderBy {
   UrlDesc = 'URL_DESC',
   WeekAsc = 'WEEK_ASC',
   WeekDesc = 'WEEK_DESC'
+}
+
+export type Timezone = {
+  __typename?: 'Timezone';
+  ogcFid: Scalars['Int']['output'];
+  tzid?: Maybe<Scalars['String']['output']>;
+  wkbGeometry?: Maybe<Scalars['String']['output']>;
+};
+
+/**
+ * A condition to be used against `Timezone` object types. All fields are tested
+ * for equality and combined with a logical ‘and.’
+ */
+export type TimezoneCondition = {
+  /** Checks for equality with the object’s `ogcFid` field. */
+  ogcFid?: InputMaybe<Scalars['Int']['input']>;
+  /** Checks for equality with the object’s `tzid` field. */
+  tzid?: InputMaybe<Scalars['String']['input']>;
+  /** Checks for equality with the object’s `wkbGeometry` field. */
+  wkbGeometry?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** A filter to be used against `Timezone` object types. All fields are combined with a logical ‘and.’ */
+export type TimezoneFilter = {
+  /** Checks for all expressions in this list. */
+  and?: InputMaybe<Array<TimezoneFilter>>;
+  /** Negates the expression. */
+  not?: InputMaybe<TimezoneFilter>;
+  /** Filter by the object’s `ogcFid` field. */
+  ogcFid?: InputMaybe<IntFilter>;
+  /** Checks for any expressions in this list. */
+  or?: InputMaybe<Array<TimezoneFilter>>;
+  /** Filter by the object’s `tzid` field. */
+  tzid?: InputMaybe<StringFilter>;
+};
+
+/** An input for mutations affecting `Timezone` */
+export type TimezoneInput = {
+  ogcFid?: InputMaybe<Scalars['Int']['input']>;
+  tzid?: InputMaybe<Scalars['String']['input']>;
+  wkbGeometry?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Represents an update to a `Timezone`. Fields that are set will be updated. */
+export type TimezonePatch = {
+  ogcFid?: InputMaybe<Scalars['Int']['input']>;
+  tzid?: InputMaybe<Scalars['String']['input']>;
+  wkbGeometry?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** A connection to a list of `Timezone` values. */
+export type TimezonesConnection = {
+  __typename?: 'TimezonesConnection';
+  /** A list of edges which contains the `Timezone` and cursor to aid in pagination. */
+  edges: Array<TimezonesEdge>;
+  /** A list of `Timezone` objects. */
+  nodes: Array<Maybe<Timezone>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+  /** The count of *all* `Timezone` you could get from the connection. */
+  totalCount: Scalars['Int']['output'];
+};
+
+/** A `Timezone` edge in the connection. */
+export type TimezonesEdge = {
+  __typename?: 'TimezonesEdge';
+  /** A cursor for use in pagination. */
+  cursor?: Maybe<Scalars['Cursor']['output']>;
+  /** The `Timezone` at the end of the edge. */
+  node?: Maybe<Timezone>;
+};
+
+/** Methods to use when ordering `Timezone`. */
+export enum TimezonesOrderBy {
+  Natural = 'NATURAL',
+  OgcFidAsc = 'OGC_FID_ASC',
+  OgcFidDesc = 'OGC_FID_DESC',
+  PrimaryKeyAsc = 'PRIMARY_KEY_ASC',
+  PrimaryKeyDesc = 'PRIMARY_KEY_DESC',
+  TzidAsc = 'TZID_ASC',
+  TzidDesc = 'TZID_DESC',
+  WkbGeometryAsc = 'WKB_GEOMETRY_ASC',
+  WkbGeometryDesc = 'WKB_GEOMETRY_DESC'
 }
 
 export type TrackQuoteViewInput = {
@@ -31729,6 +31968,40 @@ export type UpdateTestimonialPayloadTestimonialEdgeArgs = {
   orderBy?: InputMaybe<Array<TestimonialsOrderBy>>;
 };
 
+/** All input for the `updateTimezone` mutation. */
+export type UpdateTimezoneInput = {
+  /**
+   * An arbitrary string value with no semantic meaning. Will be included in the
+   * payload verbatim. May be used to track mutations by the client.
+   */
+  clientMutationId?: InputMaybe<Scalars['String']['input']>;
+  ogcFid: Scalars['Int']['input'];
+  /** An object where the defined keys will be set on the `Timezone` being updated. */
+  patch: TimezonePatch;
+};
+
+/** The output of our update `Timezone` mutation. */
+export type UpdateTimezonePayload = {
+  __typename?: 'UpdateTimezonePayload';
+  /**
+   * The exact same `clientMutationId` that was provided in the mutation input,
+   * unchanged and unused. May be used by a client to track mutations.
+   */
+  clientMutationId?: Maybe<Scalars['String']['output']>;
+  /** Our root query field type. Allows us to run any query from our mutation payload. */
+  query?: Maybe<Query>;
+  /** The `Timezone` that was updated by this mutation. */
+  timezone?: Maybe<Timezone>;
+  /** An edge for our `Timezone`. May be used by Relay 1. */
+  timezoneEdge?: Maybe<TimezonesEdge>;
+};
+
+
+/** The output of our update `Timezone` mutation. */
+export type UpdateTimezonePayloadTimezoneEdgeArgs = {
+  orderBy?: InputMaybe<Array<TimezonesOrderBy>>;
+};
+
 /** All input for the `updateTransactionImportBatch` mutation. */
 export type UpdateTransactionImportBatchInput = {
   /**
@@ -34226,6 +34499,7 @@ export type UpdatePropertyOnPropertyForFkPropertyCountryCountryIdPatch = {
   quoteDaysUsingId?: InputMaybe<QuoteDayPropertyIdFkeyInverseInput>;
   region?: InputMaybe<Scalars['String']['input']>;
   summary?: InputMaybe<Scalars['String']['input']>;
+  timezone?: InputMaybe<Scalars['String']['input']>;
   url?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -34261,6 +34535,7 @@ export type UpdatePropertyOnPropertyForFkPropertyDestinationPatch = {
   quoteDaysUsingId?: InputMaybe<QuoteDayPropertyIdFkeyInverseInput>;
   region?: InputMaybe<Scalars['String']['input']>;
   summary?: InputMaybe<Scalars['String']['input']>;
+  timezone?: InputMaybe<Scalars['String']['input']>;
   url?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -34296,6 +34571,7 @@ export type UpdatePropertyOnPropertyForFkPropertyMapPointMapPointIdPatch = {
   quoteDaysUsingId?: InputMaybe<QuoteDayPropertyIdFkeyInverseInput>;
   region?: InputMaybe<Scalars['String']['input']>;
   summary?: InputMaybe<Scalars['String']['input']>;
+  timezone?: InputMaybe<Scalars['String']['input']>;
   url?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -34331,6 +34607,7 @@ export type UpdatePropertyOnPropertyForFkPropertyMediaGalleryGalleryIdPatch = {
   quoteDaysUsingId?: InputMaybe<QuoteDayPropertyIdFkeyInverseInput>;
   region?: InputMaybe<Scalars['String']['input']>;
   summary?: InputMaybe<Scalars['String']['input']>;
+  timezone?: InputMaybe<Scalars['String']['input']>;
   url?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -34366,6 +34643,7 @@ export type UpdatePropertyOnPropertyForFkPropertyMediaItemHeroMediaIdPatch = {
   quoteDaysUsingId?: InputMaybe<QuoteDayPropertyIdFkeyInverseInput>;
   region?: InputMaybe<Scalars['String']['input']>;
   summary?: InputMaybe<Scalars['String']['input']>;
+  timezone?: InputMaybe<Scalars['String']['input']>;
   url?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -34402,6 +34680,7 @@ export type UpdatePropertyOnQuoteAccommodationDetailForFkQuoteAccommodationDetai
   quoteDaysUsingId?: InputMaybe<QuoteDayPropertyIdFkeyInverseInput>;
   region?: InputMaybe<Scalars['String']['input']>;
   summary?: InputMaybe<Scalars['String']['input']>;
+  timezone?: InputMaybe<Scalars['String']['input']>;
   url?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -34438,6 +34717,7 @@ export type UpdatePropertyOnQuoteDayForQuoteDayPropertyIdFkeyPatch = {
   quoteDaysUsingId?: InputMaybe<QuoteDayPropertyIdFkeyInverseInput>;
   region?: InputMaybe<Scalars['String']['input']>;
   summary?: InputMaybe<Scalars['String']['input']>;
+  timezone?: InputMaybe<Scalars['String']['input']>;
   url?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -35380,6 +35660,7 @@ export type UpdateQuoteOnTripForFkTripQuoteActiveQuoteIdPatch = {
 export type UpdateQuotePublicOnQuoteAccommodationDetailForFakePublicQuoteAccommodationDetailForeignKey0Patch = {
   accepted?: InputMaybe<Scalars['Datetime']['input']>;
   baseCurrency?: InputMaybe<Scalars['String']['input']>;
+  deposit?: InputMaybe<Scalars['BigFloat']['input']>;
   duration?: InputMaybe<Scalars['Int']['input']>;
   exclusions?: InputMaybe<Scalars['String']['input']>;
   expires?: InputMaybe<Scalars['Datetime']['input']>;
@@ -35406,6 +35687,7 @@ export type UpdateQuotePublicOnQuoteAccommodationDetailForFakePublicQuoteAccommo
 export type UpdateQuotePublicOnQuoteDayForFakePublicQuoteDayForeignKey0Patch = {
   accepted?: InputMaybe<Scalars['Datetime']['input']>;
   baseCurrency?: InputMaybe<Scalars['String']['input']>;
+  deposit?: InputMaybe<Scalars['BigFloat']['input']>;
   duration?: InputMaybe<Scalars['Int']['input']>;
   exclusions?: InputMaybe<Scalars['String']['input']>;
   expires?: InputMaybe<Scalars['Datetime']['input']>;
@@ -35432,6 +35714,7 @@ export type UpdateQuotePublicOnQuoteDayForFakePublicQuoteDayForeignKey0Patch = {
 export type UpdateQuotePublicOnQuoteLegalDocumentForFakePublicQuoteLegalDocumentForeignKey0Patch = {
   accepted?: InputMaybe<Scalars['Datetime']['input']>;
   baseCurrency?: InputMaybe<Scalars['String']['input']>;
+  deposit?: InputMaybe<Scalars['BigFloat']['input']>;
   duration?: InputMaybe<Scalars['Int']['input']>;
   exclusions?: InputMaybe<Scalars['String']['input']>;
   expires?: InputMaybe<Scalars['Datetime']['input']>;
@@ -35458,6 +35741,7 @@ export type UpdateQuotePublicOnQuoteLegalDocumentForFakePublicQuoteLegalDocument
 export type UpdateQuotePublicOnQuotePublicForFakePublicQuotePublicForeignKey0Patch = {
   accepted?: InputMaybe<Scalars['Datetime']['input']>;
   baseCurrency?: InputMaybe<Scalars['String']['input']>;
+  deposit?: InputMaybe<Scalars['BigFloat']['input']>;
   duration?: InputMaybe<Scalars['Int']['input']>;
   exclusions?: InputMaybe<Scalars['String']['input']>;
   expires?: InputMaybe<Scalars['Datetime']['input']>;
@@ -35483,6 +35767,7 @@ export type UpdateQuotePublicOnQuotePublicForFakePublicQuotePublicForeignKey0Pat
 export type UpdateQuotePublicOnQuotePublicForFakePublicQuotePublicForeignKey1Patch = {
   accepted?: InputMaybe<Scalars['Datetime']['input']>;
   baseCurrency?: InputMaybe<Scalars['String']['input']>;
+  deposit?: InputMaybe<Scalars['BigFloat']['input']>;
   duration?: InputMaybe<Scalars['Int']['input']>;
   exclusions?: InputMaybe<Scalars['String']['input']>;
   expires?: InputMaybe<Scalars['Datetime']['input']>;
@@ -35508,6 +35793,7 @@ export type UpdateQuotePublicOnQuotePublicForFakePublicQuotePublicForeignKey1Pat
 export type UpdateQuotePublicOnQuotePublicForFakePublicQuotePublicForeignKey2Patch = {
   accepted?: InputMaybe<Scalars['Datetime']['input']>;
   baseCurrency?: InputMaybe<Scalars['String']['input']>;
+  deposit?: InputMaybe<Scalars['BigFloat']['input']>;
   duration?: InputMaybe<Scalars['Int']['input']>;
   exclusions?: InputMaybe<Scalars['String']['input']>;
   expires?: InputMaybe<Scalars['Datetime']['input']>;
@@ -37170,6 +37456,7 @@ export type AcceptQuoteMutationVariables = Exact<{
   name: Scalars['String']['input'];
   email: Scalars['String']['input'];
   date: Scalars['String']['input'];
+  source: Scalars['String']['input'];
 }>;
 
 
@@ -37263,8 +37550,8 @@ export function useGetDestinationLazyQuery(baseOptions?: Apollo.LazyQueryHookOpt
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<GetDestinationQuery, GetDestinationQueryVariables>(GetDestinationDocument, options);
         }
-export function useGetDestinationSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetDestinationQuery, GetDestinationQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
+export function useGetDestinationSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetDestinationQuery, GetDestinationQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
           return Apollo.useSuspenseQuery<GetDestinationQuery, GetDestinationQueryVariables>(GetDestinationDocument, options);
         }
 export type GetDestinationQueryHookResult = ReturnType<typeof useGetDestinationQuery>;
@@ -37346,8 +37633,8 @@ export function useGetInvoiceLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<GetInvoiceQuery, GetInvoiceQueryVariables>(GetInvoiceDocument, options);
         }
-export function useGetInvoiceSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetInvoiceQuery, GetInvoiceQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
+export function useGetInvoiceSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetInvoiceQuery, GetInvoiceQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
           return Apollo.useSuspenseQuery<GetInvoiceQuery, GetInvoiceQueryVariables>(GetInvoiceDocument, options);
         }
 export type GetInvoiceQueryHookResult = ReturnType<typeof useGetInvoiceQuery>;
@@ -37424,8 +37711,8 @@ export function useGetLegalDocumentLazyQuery(baseOptions?: Apollo.LazyQueryHookO
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<GetLegalDocumentQuery, GetLegalDocumentQueryVariables>(GetLegalDocumentDocument, options);
         }
-export function useGetLegalDocumentSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetLegalDocumentQuery, GetLegalDocumentQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
+export function useGetLegalDocumentSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetLegalDocumentQuery, GetLegalDocumentQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
           return Apollo.useSuspenseQuery<GetLegalDocumentQuery, GetLegalDocumentQueryVariables>(GetLegalDocumentDocument, options);
         }
 export type GetLegalDocumentQueryHookResult = ReturnType<typeof useGetLegalDocumentQuery>;
@@ -37505,8 +37792,8 @@ export function useGetPropertyLazyQuery(baseOptions?: Apollo.LazyQueryHookOption
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<GetPropertyQuery, GetPropertyQueryVariables>(GetPropertyDocument, options);
         }
-export function useGetPropertySuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetPropertyQuery, GetPropertyQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
+export function useGetPropertySuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetPropertyQuery, GetPropertyQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
           return Apollo.useSuspenseQuery<GetPropertyQuery, GetPropertyQueryVariables>(GetPropertyDocument, options);
         }
 export type GetPropertyQueryHookResult = ReturnType<typeof useGetPropertyQuery>;
@@ -37550,8 +37837,8 @@ export function useGetFeaturedPropertyLazyQuery(baseOptions?: Apollo.LazyQueryHo
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<GetFeaturedPropertyQuery, GetFeaturedPropertyQueryVariables>(GetFeaturedPropertyDocument, options);
         }
-export function useGetFeaturedPropertySuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetFeaturedPropertyQuery, GetFeaturedPropertyQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
+export function useGetFeaturedPropertySuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetFeaturedPropertyQuery, GetFeaturedPropertyQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
           return Apollo.useSuspenseQuery<GetFeaturedPropertyQuery, GetFeaturedPropertyQueryVariables>(GetFeaturedPropertyDocument, options);
         }
 export type GetFeaturedPropertyQueryHookResult = ReturnType<typeof useGetFeaturedPropertyQuery>;
@@ -37559,8 +37846,10 @@ export type GetFeaturedPropertyLazyQueryHookResult = ReturnType<typeof useGetFea
 export type GetFeaturedPropertySuspenseQueryHookResult = ReturnType<typeof useGetFeaturedPropertySuspenseQuery>;
 export type GetFeaturedPropertyQueryResult = Apollo.QueryResult<GetFeaturedPropertyQuery, GetFeaturedPropertyQueryVariables>;
 export const AcceptQuoteDocument = gql`
-    mutation AcceptQuote($key: String!, $name: String!, $email: String!, $date: String!) {
-  acceptQuote(input: {key: $key, name: $name, email: $email, date: $date}) {
+    mutation AcceptQuote($key: String!, $name: String!, $email: String!, $date: String!, $source: String!) {
+  acceptQuote(
+    input: {key: $key, name: $name, email: $email, source: $source, date: $date}
+  ) {
     success
     message
   }
@@ -37585,6 +37874,7 @@ export type AcceptQuoteMutationFn = Apollo.MutationFunction<AcceptQuoteMutation,
  *      name: // value for 'name'
  *      email: // value for 'email'
  *      date: // value for 'date'
+ *      source: // value for 'source'
  *   },
  * });
  */
@@ -37751,8 +38041,8 @@ export function useGetQuoteLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<G
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<GetQuoteQuery, GetQuoteQueryVariables>(GetQuoteDocument, options);
         }
-export function useGetQuoteSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetQuoteQuery, GetQuoteQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
+export function useGetQuoteSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetQuoteQuery, GetQuoteQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
           return Apollo.useSuspenseQuery<GetQuoteQuery, GetQuoteQueryVariables>(GetQuoteDocument, options);
         }
 export type GetQuoteQueryHookResult = ReturnType<typeof useGetQuoteQuery>;

@@ -7,22 +7,22 @@ config:
   withComponent: false
   withHooks: true
 generates:
-  lib/api/jambo.ts:
+  src/lib/api/jambo.ts:
     schema:
       - https://api.takeoffgo.com/graphql:
           headers:
             X-Token: dSyWj7hdxaaCogFglf15qSPOW1pb61nTn0Xm3xzI
     documents:
-      - lib/api/queries/jambo/*.graphql
+      - src/lib/api/queries/jambo/*.graphql
     plugins:
       - typescript
       - typescript-operations
       - typescript-react-apollo
       - fragment-matcher
-  lib/api/public.ts:
+  src/lib/api/public.ts:
     schema: http://localhost:3001/api/graphql
     documents:
-      - lib/api/queries/public/*.graphql
+      - src/lib/api/queries/public/*.graphql
     plugins:
       - typescript
       - typescript-operations

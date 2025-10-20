@@ -20,6 +20,7 @@ type AcceptQuoteInput = {
   name: string;
   email: string;
   date: string;
+  source: string;
 };
 
 type AcceptQuoteResponse = {
@@ -96,8 +97,7 @@ type TrackQuoteViewInput = {
 
 const trackQuoteView = async (
   _: NextContext,
-  variables: { input: TrackQuoteViewInput },
-  context: any
+  variables: { input: TrackQuoteViewInput }
 ): Promise<boolean> => {
   try {
     const inHeaders = await headers();
@@ -143,6 +143,7 @@ const schema = createSchema<NextContext>({
       email: String!
       date: String!
       accepted: Boolean!
+      source: String!
     }
 
     type AcceptQuoteResponse {

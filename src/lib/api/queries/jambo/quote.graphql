@@ -3,8 +3,9 @@ mutation AcceptQuote(
   $name: String!
   $email: String!
   $date: String!
+  $source: String!
 ) {
-  acceptQuote(input: { key: $key, name: $name, email: $email, date: $date }) {
+  acceptQuote(input: { key: $key, name: $name, email: $email, source: $source, date: $date }) {
     success
     message
   }

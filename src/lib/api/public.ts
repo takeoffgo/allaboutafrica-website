@@ -23,6 +23,7 @@ export type AcceptQuoteInput = {
   email: Scalars['String']['input'];
   key: Scalars['String']['input'];
   name: Scalars['String']['input'];
+  source: Scalars['String']['input'];
 };
 
 export type AcceptQuoteResponse = {

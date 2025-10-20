@@ -48,6 +48,7 @@ export const AcceptModal: React.FC<AcceptModalProps> = ({
         input: {
           key: quoteKey,
           date: new Date().toISOString().substring(0, 10),
+          source: "allaboutafrica",
           ...formData,
         },
       },
