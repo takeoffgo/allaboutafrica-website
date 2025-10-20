@@ -62,14 +62,14 @@ const BankDetails: React.FC<BankDetailsProps> = ({ currency, number }) => {
               <dd>Commonwealth Bank</dd>
               <dt>BSB</dt>
               <dd>
-                <code className="is-amount">067-873</code>
+                <code className="is-amount">083-004</code>
               </dd>
               <dt>Account number</dt>
               <dd>
-                <code className="is-amount">1010-9812</code>
+                <code className="is-amount">399-998-836</code>
               </dd>
               <dt>Account holder</dt>
-              <dd>Take Off Go Pty Ltd</dd>
+              <dd>All About Africa Pty Ltd</dd>
             </dl>
             <p>
               Please include the reference{" "}
@@ -93,25 +93,25 @@ const BankDetails: React.FC<BankDetailsProps> = ({ currency, number }) => {
             </p>
             <dl className="indented">
               <dt>Account holder</dt>
-              <dd>Take Off Go Pty Ltd</dd>
+              <dd>All About Africa Pty Ltd</dd>
               <dt>Routing number</dt>
               <dd>
-                <code className="is-amount">026073150</code>
+                <code className="is-amount">101019628</code>
               </dd>
               <dt>Swift/BIC</dt>
               <dd>
-                <code className="is-amount">CMFGUS33</code>
+                <code className="is-amount">TRWIUS35XXX</code>
               </dd>
               <dt>Account number</dt>
               <dd>
-                <code className="is-amount">8313532966</code>
+                <code className="is-amount">213783534954</code>
               </dd>
               <dt>Bank address</dt>
               <dd>
                 <address>
-                  30 W. 26th Street, Sixth Floor
+                  Lead Bank
                   <br />
-                  New York NY 10010
+                  108 W 13th St, Wilmington, DE 19801
                   <br />
                   United States
                 </address>
@@ -126,52 +126,52 @@ const BankDetails: React.FC<BankDetailsProps> = ({ currency, number }) => {
         </div>
       );
 
-    case "ZAR":
-      return (
-        <div className="columns is-variable is-1">
-          <div className="column is-narrow">
-            <span className="icon is-medium">
-              <i className="fal fa-lg fa-university" />
-            </span>
-          </div>
-          <div className="column">
-            <p>
-              <strong>Bank transfer</strong> our bank details are &ndash;
-            </p>
-            <dl className="indented">
-              <dt>Account holder</dt>
-              <dd>Take Off Go Pty Ltd</dd>
-              <dt>Swift/BIC</dt>
-              <dd>
-                <code className="is-amount">TRWIGB2LXXX</code>
-              </dd>
-              <dt>IBAN</dt>
-              <dd>
-                <code className="is-amount">GB85 TRWI 2314 7044 6810 42</code>
-              </dd>
-              <dt>Bank address</dt>
-              <dd>
-                <address>
-                  Wise Payments Limited
-                  <br />
-                  56 Shoreditch High Street
-                  <br />
-                  London
-                  <br />
-                  E1 6JJ
-                  <br />
-                  United Kingdom
-                </address>
-              </dd>
-            </dl>
-            <p>
-              Please include the reference{" "}
-              <code className="strong is-amount">Invoice {number}</code> when
-              making payment.
-            </p>
-          </div>
-        </div>
-      );
+    // case "ZAR":
+    //   return (
+    //     <div className="columns is-variable is-1">
+    //       <div className="column is-narrow">
+    //         <span className="icon is-medium">
+    //           <i className="fal fa-lg fa-university" />
+    //         </span>
+    //       </div>
+    //       <div className="column">
+    //         <p>
+    //           <strong>Bank transfer</strong> our bank details are &ndash;
+    //         </p>
+    //         <dl className="indented">
+    //           <dt>Account holder</dt>
+    //           <dd>All About Africa Pty Ltd</dd>
+    //           <dt>Swift/BIC</dt>
+    //           <dd>
+    //             <code className="is-amount">TRWIGB2LXXX</code>
+    //           </dd>
+    //           <dt>IBAN</dt>
+    //           <dd>
+    //             <code className="is-amount">GB85 TRWI 2314 7044 6810 42</code>
+    //           </dd>
+    //           <dt>Bank address</dt>
+    //           <dd>
+    //             <address>
+    //               Wise Payments Limited
+    //               <br />
+    //               56 Shoreditch High Street
+    //               <br />
+    //               London
+    //               <br />
+    //               E1 6JJ
+    //               <br />
+    //               United Kingdom
+    //             </address>
+    //           </dd>
+    //         </dl>
+    //         <p>
+    //           Please include the reference{" "}
+    //           <code className="strong is-amount">Invoice {number}</code> when
+    //           making payment.
+    //         </p>
+    //       </div>
+    //     </div>
+    //   );
     default:
       return (
         <div className="columns is-variable is-1">
@@ -182,8 +182,8 @@ const BankDetails: React.FC<BankDetailsProps> = ({ currency, number }) => {
           </div>
           <div className="column">
             <p>
-              We are unable to receive payments in this currency (${currency}).
-              Please contact your travel consultant for more information.
+              Please contact your travel consultant for more information about
+              making payment in {currency}.
             </p>
           </div>
         </div>

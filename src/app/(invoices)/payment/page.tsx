@@ -22,7 +22,7 @@ export async function generateMetadata({
   const model = await getContent((await searchParams).id!);
 
   return {
-    title: ["Payment", `Invoice ${model?.invoice?.number}`, "Take Off Go"].join(
+    title: ["Payment", `Invoice ${model?.invoice?.number}`, "All About Africa"].join(
       " - "
     ),
   };

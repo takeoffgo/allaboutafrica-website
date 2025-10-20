@@ -16,7 +16,7 @@ export const Input: React.FC<InputProps> = ({ invoice, paid, ...rest }) => {
     return (
       <div className="content">
         <p>This invoice cannot be found.</p>
-        <p>Please contact your Take Off Go representative.</p>
+        <p>Please contact your All About Africa representative.</p>
       </div>
     );
   }
