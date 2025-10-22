@@ -126,52 +126,52 @@ const BankDetails: React.FC<BankDetailsProps> = ({ currency, number }) => {
         </div>
       );
 
-    // case "ZAR":
-    //   return (
-    //     <div className="columns is-variable is-1">
-    //       <div className="column is-narrow">
-    //         <span className="icon is-medium">
-    //           <i className="fal fa-lg fa-university" />
-    //         </span>
-    //       </div>
-    //       <div className="column">
-    //         <p>
-    //           <strong>Bank transfer</strong> our bank details are &ndash;
-    //         </p>
-    //         <dl className="indented">
-    //           <dt>Account holder</dt>
-    //           <dd>All About Africa Pty Ltd</dd>
-    //           <dt>Swift/BIC</dt>
-    //           <dd>
-    //             <code className="is-amount">TRWIGB2LXXX</code>
-    //           </dd>
-    //           <dt>IBAN</dt>
-    //           <dd>
-    //             <code className="is-amount">GB85 TRWI 2314 7044 6810 42</code>
-    //           </dd>
-    //           <dt>Bank address</dt>
-    //           <dd>
-    //             <address>
-    //               Wise Payments Limited
-    //               <br />
-    //               56 Shoreditch High Street
-    //               <br />
-    //               London
-    //               <br />
-    //               E1 6JJ
-    //               <br />
-    //               United Kingdom
-    //             </address>
-    //           </dd>
-    //         </dl>
-    //         <p>
-    //           Please include the reference{" "}
-    //           <code className="strong is-amount">Invoice {number}</code> when
-    //           making payment.
-    //         </p>
-    //       </div>
-    //     </div>
-    //   );
+    case "ZAR":
+      return (
+        <div className="columns is-variable is-1">
+          <div className="column is-narrow">
+            <span className="icon is-medium">
+              <i className="fal fa-lg fa-university" />
+            </span>
+          </div>
+          <div className="column">
+            <p>
+              <strong>Bank transfer</strong> our bank details are &ndash;
+            </p>
+            <dl className="indented">
+              <dt>Account holder</dt>
+              <dd>All About Africa Pty Ltd</dd>
+              <dt>Swift/BIC</dt>
+              <dd>
+                <code className="is-amount">TRWIGB2LXXX</code>
+              </dd>
+              <dt>IBAN</dt>
+              <dd>
+                <code className="is-amount">GB97 TRWI 6084 6421 9690 11</code>
+              </dd>
+              <dt>Bank address</dt>
+              <dd>
+                <address>
+                  Wise Payments Limited
+                  <br />
+                  Worship Square, 65 Clifton Street
+                  <br />
+                  London
+                  <br />
+                  EC2A 4JE
+                  <br />
+                  United Kingdom
+                </address>
+              </dd>
+            </dl>
+            <p>
+              Please include the reference{" "}
+              <code className="strong is-amount">Invoice {number}</code> when
+              making payment.
+            </p>
+          </div>
+        </div>
+      );
     default:
       return (
         <div className="columns is-variable is-1">
