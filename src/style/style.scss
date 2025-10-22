@@ -2,11 +2,13 @@
 
 @use "bulma/sass" with (
   $family-primary: "Inter, sans-serif",
+  $family-monospace: "PT Mono, monospaced",
   $fullhd-enabled: false,
   $widescreen-enabled: true
 );
 
 @import url("https://fonts.googleapis.com/css?family=Inter:400,700");
+@import url("https://fonts.googleapis.com/css?family=PT+Mono:400,700");
 
 
 dl {

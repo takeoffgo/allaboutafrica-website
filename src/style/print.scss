@@ -27,6 +27,16 @@
     height: 50vh !important;
     min-height: initial;
   }
+
+  .sheet {
+    break-after: auto !important;
+  }
+
+  [next-route-announcer],
+  [nextjs-portal],
+  [grammarly-desktop-integration] {
+    display: none;
+  }
 }
 
 html.printable {

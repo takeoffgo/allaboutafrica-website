@@ -10,7 +10,6 @@ import {
 } from "@/lib/api/jambo";
 import { jamboClient } from "@/lib/jambo";
 
-import "@/style/fonts.scss";
 import "@/style/print.scss";
 import "@/style/style.scss";
 

@@ -3,7 +3,6 @@ import React from "react";
 // import "./global.scss";
 import Script from "next/script";
 
-import "@/style/fonts.scss";
 import "@/style/style.scss";
 import "@/style/print.scss";
 

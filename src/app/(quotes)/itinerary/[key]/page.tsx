@@ -10,7 +10,7 @@ import { jamboClient } from "@/lib/jambo";
 
 import { mediaUrl } from "@/components/Quote/global/helpers";
 import { Metadata } from "next";
-import "@/style/fonts.scss";
+
 import "@/style/print.scss";
 import "@/style/style.scss";
 
