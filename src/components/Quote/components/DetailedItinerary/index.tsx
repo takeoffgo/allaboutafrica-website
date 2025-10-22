@@ -217,17 +217,19 @@ const DetailedItinerary = ({ data }: { data: GetQuoteQuery }) => {
                   {property ? (
                     <>
                       <div className="field is-grouped is-grouped-multiline">
-                        <div className="tags has-addons">
-                          <div className="tag">
-                            <span className="icon">
-                              <i className="fas fa-bed" />
-                            </span>
-                            <a href={`#property-${property.id}`}>
-                              {property.name}
-                            </a>
-                          </div>
-                          <div className="tag">
-                            {accom?.roomType && <span>{accom.roomType}</span>}
+                        <div className="control">
+                          <div className="tags has-addons">
+                            <div className="tag">
+                              <span className="icon">
+                                <i className="fas fa-bed" />
+                              </span>
+                              <a href={`#property-${property.id}`}>
+                                {property.name}
+                              </a>
+                            </div>
+                            <div className="tag">
+                              {accom?.roomType && <span>{accom.roomType}</span>}
+                            </div>
                           </div>
                         </div>
 
@@ -236,31 +238,35 @@ const DetailedItinerary = ({ data }: { data: GetQuoteQuery }) => {
                           <>
                             {accom?.foodInclusions
                               ? accom?.foodInclusions?.length > 0 && (
-                                  <div className="tag is-hidden-print">
-                                    <span className="icon">
-                                      <i className="fas fa-utensils" />
-                                    </span>
-                                    <p>
-                                      {toSentence(
-                                        accom.foodInclusions as string[]
-                                      )}{" "}
-                                      included
-                                    </p>
+                                  <div className="control">
+                                    <div className="tag is-hidden-print">
+                                      <span className="icon">
+                                        <i className="fas fa-utensils" />
+                                      </span>
+                                      <p>
+                                        {toSentence(
+                                          accom.foodInclusions as string[]
+                                        )}{" "}
+                                        included
+                                      </p>
+                                    </div>
                                   </div>
                                 )
                               : null}
                             {accom?.beverageInclusions
                               ? accom?.beverageInclusions.length > 0 && (
-                                  <div className="tag is-hidden-print">
-                                    <span className="icon">
-                                      <i className="fas fa-glass" />
-                                    </span>
-                                    <p>
-                                      {toSentence(
-                                        accom.beverageInclusions as string[]
-                                      )}{" "}
-                                      beverages
-                                    </p>
+                                  <div className="control">
+                                    <div className="tag is-hidden-print">
+                                      <span className="icon">
+                                        <i className="fas fa-glass" />
+                                      </span>
+                                      <p>
+                                        {toSentence(
+                                          accom.beverageInclusions as string[]
+                                        )}{" "}
+                                        beverages
+                                      </p>
+                                    </div>
                                   </div>
                                 )
                               : null}
