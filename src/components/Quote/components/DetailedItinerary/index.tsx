@@ -11,7 +11,7 @@ import { QuoteStatus } from "../../global/constants";
 
 const calculateSpan = (
   index: number,
-  source: { repeat: boolean }[],
+  source: { repeat: boolean }[]
 ): number => {
   let count = 0;
   for (let i = index + 1; i < source.length; i++) {
@@ -31,18 +31,15 @@ const DetailedItinerary = ({ data }: { data: GetQuoteQuery }) => {
       : flights.filter((flight) =>
           flight.departureDate
             .utc()
-            .isBefore(
-              moment.utc(data.quote?.days?.nodes[0]?.date || ""),
-              "day",
-            ),
+            .isBefore(moment.utc(data.quote?.days?.nodes[0]?.date || ""), "day")
         );
 
   const lastDay = moment(data.quote?.start ?? "").add(
     (data.quote?.duration ?? 0) + 1,
-    "day",
+    "day"
   );
   const flightsAfter = flights.filter((flight) =>
-    flight.departureDate.utc().isAfter(lastDay, "day"),
+    flight.departureDate.utc().isAfter(lastDay, "day")
   );
 
   return (
@@ -109,7 +106,7 @@ const DetailedItinerary = ({ data }: { data: GetQuoteQuery }) => {
           };
 
           const accom = data.quote?.accommodation?.nodes.find(
-            (a) => a?.id === day?.accommodationId,
+            (a) => a?.id === day?.accommodationId
           );
           const property = accom?.property;
           const destinations = day?.quoteDayDestinationsByDayId?.nodes;
@@ -117,9 +114,7 @@ const DetailedItinerary = ({ data }: { data: GetQuoteQuery }) => {
           const finalHr = finalDay ? null : <hr className="is-hidden-print" />;
           const matchingFlights = flights
             .filter((flight) =>
-              flight.departureDate
-                .utc()
-                .isBetween(timeSpan.start, timeSpan.end),
+              flight.departureDate.utc().isBetween(timeSpan.start, timeSpan.end)
             )
             .filter((ent) => !flightsAfter.includes(ent));
 
@@ -183,14 +178,12 @@ const DetailedItinerary = ({ data }: { data: GetQuoteQuery }) => {
                                   {idx > 0 ? "to " : null}
                                   <a
                                     key={d.destination.id}
-                                    href={`/travel/destinations/${
-                                      d.destination.id
-                                    }`}
+                                    href={`/travel/destinations/${d.destination.id}`}
                                   >
                                     {d.destination.name ?? null}
                                   </a>
                                 </li>
-                              ) : null,
+                              ) : null
                             )}
                           </ul>
                         </small>
@@ -223,44 +216,57 @@ const DetailedItinerary = ({ data }: { data: GetQuoteQuery }) => {
                   )}
                   {property ? (
                     <>
-                      <div className="columns is-multiline is-gapless-mobile">
-                        <strong className="column is-narrow">
-                          Accommodation
-                        </strong>
-                        <a
-                          className="column is-narrow"
-                          href={`#property-${property.id}`}
-                        >
-                          {property.name}
-                        </a>
-                        {accom?.roomType && (
-                          <span className="column is-narrow">
-                            {accom.roomType}
-                          </span>
-                        )}
-                      </div>
-                      {accom?.foodInclusions || accom?.beverageInclusions ? (
-                        <div className="columns is-multiline is-gapless-mobile">
-                          {accom?.foodInclusions
-                            ? accom?.foodInclusions?.length > 0 && (
-                                <span className="column is-narrow is-hidden-print">
-                                  {toSentence(accom.foodInclusions as string[])}{" "}
-                                  included
-                                </span>
-                              )
-                            : null}
-                          {accom?.beverageInclusions
-                            ? accom?.beverageInclusions.length > 0 && (
-                                <span className="column is-narrow is-hidden-print">
-                                  {toSentence(
-                                    accom.beverageInclusions as string[],
-                                  )}{" "}
-                                  beverages
-                                </span>
-                              )
-                            : null}
+                      <div className="field is-grouped is-grouped-multiline">
+                        <div className="tags has-addons">
+                          <div className="tag">
+                            <span className="icon">
+                              <i className="fas fa-bed" />
+                            </span>
+                            <a href={`#property-${property.id}`}>
+                              {property.name}
+                            </a>
+                          </div>
+                          <div className="tag">
+                            {accom?.roomType && <span>{accom.roomType}</span>}
+                          </div>
                         </div>
-                      ) : null}
+
+                        {(accom?.foodInclusions?.length ?? 0) > 0 ||
+                        (accom?.beverageInclusions?.length ?? 0) > 0 ? (
+                          <>
+                            {accom?.foodInclusions
+                              ? accom?.foodInclusions?.length > 0 && (
+                                  <div className="tag is-hidden-print">
+                                    <span className="icon">
+                                      <i className="fas fa-utensils" />
+                                    </span>
+                                    <p>
+                                      {toSentence(
+                                        accom.foodInclusions as string[]
+                                      )}{" "}
+                                      included
+                                    </p>
+                                  </div>
+                                )
+                              : null}
+                            {accom?.beverageInclusions
+                              ? accom?.beverageInclusions.length > 0 && (
+                                  <div className="tag is-hidden-print">
+                                    <span className="icon">
+                                      <i className="fas fa-glass" />
+                                    </span>
+                                    <p>
+                                      {toSentence(
+                                        accom.beverageInclusions as string[]
+                                      )}{" "}
+                                      beverages
+                                    </p>
+                                  </div>
+                                )
+                              : null}
+                          </>
+                        ) : null}
+                      </div>
                     </>
                   ) : null}
                   {finalDay ? (
