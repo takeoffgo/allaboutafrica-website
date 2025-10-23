@@ -10,7 +10,6 @@
 @import url("https://fonts.googleapis.com/css?family=TASA Orbiter:400,600,800");
 @import url("https://fonts.googleapis.com/css?family=PT+Mono:400,700");
 
-
 dl {
   &.indented {
     margin: 0.5rem 1rem;
@@ -355,9 +354,7 @@ footer {
 }
 
 .is-amount {
-  font-feature-settings:
-    "zero" 1,
-    "tnum" 1;
+  font-feature-settings: "zero" 1, "tnum" 1;
 }
 
 code.is-amount {
@@ -368,12 +365,6 @@ code.is-amount {
 a.is-logo {
   text-decoration: none;
   color: inherit;
-}
-
-.ele-collection__message {
-  max-width: 300px;
-  justify-self: center;
-  margin-top: 1rem;
 }
 
 .is-muted {

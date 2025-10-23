@@ -20,6 +20,7 @@ import { Tracking } from "./components/Tracking";
 import { QuoteStatus } from "./global/constants";
 import { extractPoints } from "./global/helpers";
 import { LogoEle } from "../Logo";
+import { Column, Columns } from "../Bulma";
 
 type QuoteProps = {
   model: GetQuoteQuery;
@@ -119,18 +120,23 @@ const QuoteComp: React.FC<QuoteProps> = ({
       )}
       {model.quote?.trip?.agency ? (
         <>
-          <div className="container has-text-centered is-hidden-print">
-            <a
-              href="https://www.elecollection.co/"
-              target="_blank"
-              rel="noreferrer noopener"
-            >
-              <LogoEle height={140} />
-            </a>
-            <p className="ele-collection__message">
-              Together, we journey towards a cleaner Southern Africa &mdash;
-              proudly supporting the Ele Collection&apos;s plastic-free mission.
-            </p>
+          <div className="container is-hidden-print">
+            <Columns centred>
+              <Column width={4} className="has-text-centered">
+                <a
+                  href="https://www.elecollection.co/"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  <LogoEle height={140} />
+                </a>
+                <p>
+                  Together, we journey towards a cleaner Southern Africa &mdash;
+                  proudly supporting the Ele Collection&apos;s plastic-free
+                  mission.
+                </p>
+              </Column>
+            </Columns>
           </div>
           <FooterLegacy />
         </>
