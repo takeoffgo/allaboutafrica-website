@@ -7,7 +7,7 @@ import { Content } from "../../Bulma";
 import ReactMarkdown from "react-markdown";
 
 const Summary = ({ data }: { data: GetQuoteQuery }) => (
-  <section className="quote-summary__container section container">
+  <section className="section container">
     {data.quote?.trip?.agency && data.quote?.hero?.subtitle ? (
       <>
         <Content>
