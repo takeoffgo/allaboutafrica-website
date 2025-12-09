@@ -1,3 +1,5 @@
+@use "./paper.scss";
+
 @media print {
   @page {
     size: A4;
@@ -40,8 +42,6 @@
 }
 
 html.printable {
-  @import "./paper.scss";
-
   @media screen {
     body {
       background-color: #fff;
