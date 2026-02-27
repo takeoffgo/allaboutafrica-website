@@ -18,4 +18,3 @@ export function makeJamboClient(env: {
   });
 }
 
-export const jamboClient = makeJamboClient(process.env);

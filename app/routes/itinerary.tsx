@@ -4,10 +4,14 @@ import {
   type GetQuoteQueryVariables,
 } from "../lib/api/jambo";
 import ItineraryPage from "../itinerary/components/ItineraryPage";
-import { jamboClient, makeJamboClient } from "~/lib/jambo";
+import { makeJamboClient } from "~/lib/jambo";
 import type { LinksFunction } from "react-router";
 import type { Route } from "../+types/root";
 
+export function meta({ loaderData }: Route.MetaArgs) {
+  const data = loaderData!.quote;
+  return [{ title: `${data.quote.hero.title} - All About Africa` }];
+}
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
