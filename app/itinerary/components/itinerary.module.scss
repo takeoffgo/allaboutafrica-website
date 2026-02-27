@@ -21,6 +21,7 @@ $font-sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: $charcoal;
   font-family: $font-sans;
   font-size: 14px;
+  font-weight: 300;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 
@@ -73,7 +74,7 @@ $font-sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
   &__title {
     font-family: $font-serif;
     font-size: clamp(48px, 7vw, 100px);
-    font-weight: 300;
+    font-weight: 100;
     color: #edeadd;
     line-height: 1;
     letter-spacing: -0.03em;
@@ -203,7 +204,7 @@ $font-sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
   &__link {
     font-family: $font-sans;
     font-size: 12px;
-    font-weight: 500;
+    font-weight: 100;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: $white;
@@ -231,7 +232,7 @@ $font-sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: $white;
     font-family: $font-sans;
     font-size: 12px;
-    font-weight: 500;
+    font-weight: 100;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     cursor: pointer;
@@ -307,7 +308,7 @@ $font-sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
   &__label {
     font-family: $font-sans;
     font-size: 11px;
-    font-weight: 600;
+    font-weight: 100;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: $charcoal;
@@ -343,7 +344,7 @@ $font-sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
   &__title {
     font-family: $font-serif;
     font-size: clamp(28px, 3vw, 47px);
-    font-weight: 300;
+    font-weight: 100;
     color: $charcoal;
     line-height: 1;
     text-transform: uppercase;
@@ -418,7 +419,7 @@ $font-sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
     padding: 10px 24px;
     font-family: $font-sans;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 100;
     letter-spacing: 0.05em;
     text-transform: uppercase;
     white-space: nowrap;
@@ -441,7 +442,7 @@ $font-sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
     align-items: center;
     font-family: $font-serif;
     font-size: 24px;
-    font-weight: 300;
+    font-weight: 100;
     color: $charcoal;
     flex: 1;
 
@@ -536,7 +537,7 @@ $font-sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: $white;
     font-family: $font-sans;
     font-size: 13px;
-    font-weight: 500;
+    font-weight: 100;
     letter-spacing: 0.08em;
     text-transform: uppercase;
 
@@ -597,7 +598,7 @@ $font-sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
     padding: 8px 20px 8px 16px;
     font-family: $font-sans;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 100;
     letter-spacing: 0.05em;
     text-transform: uppercase;
     white-space: nowrap;
@@ -637,7 +638,7 @@ $font-sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
   &__location {
     font-family: $font-serif;
     font-size: clamp(40px, 5vw, 60px);
-    font-weight: 300;
+    font-weight: 100;
     line-height: 1;
     color: $charcoal;
     text-transform: uppercase;
@@ -669,7 +670,7 @@ $font-sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
   &__label {
     font-family: $font-sans;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 100;
     letter-spacing: 0.05em;
     text-transform: uppercase;
     color: $charcoal;
@@ -815,7 +816,7 @@ $font-sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
     padding: 6px 14px 6px 10px;
     font-family: $font-sans;
     font-size: 11px;
-    font-weight: 500;
+    font-weight: 100;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: $charcoal;
@@ -846,7 +847,7 @@ $font-sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
   &__name {
     font-family: $font-serif;
     font-size: clamp(28px, 3vw, 40px);
-    font-weight: 300;
+    font-weight: 100;
     line-height: 1;
     color: $charcoal;
     text-transform: uppercase;
@@ -857,7 +858,7 @@ $font-sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
   &__descLabel {
     font-family: $font-sans;
     font-size: 11px;
-    font-weight: 600;
+    font-weight: 100;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: $charcoal;
@@ -924,7 +925,7 @@ $font-sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
   &__iata {
     font-family: $font-serif;
     font-size: 28px;
-    font-weight: 300;
+    font-weight: 100;
     text-transform: uppercase;
   }
 
