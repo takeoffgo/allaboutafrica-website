@@ -4,7 +4,7 @@ import {
   type GetQuoteQueryVariables,
 } from "../lib/api/jambo";
 import ItineraryPage from "../itinerary/components/ItineraryPage";
-import { jamboClient } from "~/lib/jambo";
+import { jamboClient, makeJamboClient } from "~/lib/jambo";
 import type { LinksFunction } from "react-router";
 import type { Route } from "../+types/root";
 
@@ -25,9 +25,10 @@ export const links: LinksFunction = () => [
   },
 ];
 
-export async function loader({ params }: Route.LoaderArgs) {
+export async function loader({ params, context }: Route.LoaderArgs) {
+  const client = makeJamboClient(context.cloudflare.env || process.env);
   const key = params["key"]!;
-  const res = await jamboClient.query<GetQuoteQuery, GetQuoteQueryVariables>({
+  const res = await client.query<GetQuoteQuery, GetQuoteQueryVariables>({
     query: GetQuoteDocument,
     fetchPolicy: "network-only",
     variables: { key },
