@@ -28,7 +28,6 @@ const SectionAccordion: React.FC<Props> = ({
   children,
 }) => {
   const handleClick = () => {
-    console.log('ontoggle')
     if (showChevron) onToggle();
   };
 
