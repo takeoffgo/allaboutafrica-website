@@ -1,0 +1,85 @@
+@use '../styles/tokens' as *;
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 80px;
+  height: 100px;
+  position: relative;
+  z-index: 10;
+
+  @media (max-width: 768px) {
+    padding: 0 20px;
+    height: 70px;
+  }
+
+  &__logo {
+    color: $cream;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  &__link {
+    font-family: $font-sans;
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba($white, 0.75);
+    text-decoration: none;
+    transition: color 0.2s;
+
+    &:hover {
+      color: $white;
+    }
+
+    &--active {
+      color: $white;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+  }
+
+  &__cta {
+    padding: 0 22px;
+    height: 38px;
+    border: 1px solid rgba($white, 0.55);
+    color: $white;
+    font-family: $font-sans;
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s;
+    white-space: nowrap;
+
+    &:hover {
+      background: rgba($white, 0.12);
+      border-color: $white;
+    }
+
+    @media (max-width: 768px) {
+      padding: 0 14px;
+      font-size: 10px;
+      height: 34px;
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import React from "react";
 import moment from "moment-timezone";
-import styles from "./itinerary.module.scss";
+import styles from "./FlightsSection.module.scss";
 import type { extractSortedFlights } from "../helpers";
 
 const ArrowRightIcon = () => (

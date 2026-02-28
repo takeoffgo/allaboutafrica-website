@@ -1,0 +1,121 @@
+@use '../../styles/tokens' as *;
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  min-height: 600px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+        rgba(25, 25, 25, 0.85) 0%,
+        rgba(25, 25, 25, 0) 43%);
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  &__title {
+    font-family: $font-serif;
+    font-size: clamp(48px, 7vw, 100px);
+    font-weight: 100;
+    color: #edeadd;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    text-align: right;
+    padding: 0 80px;
+    margin-top: clamp(40px, 4.5vh, 58px);
+    margin-bottom: 0;
+
+    @media (max-width: 768px) {
+      text-align: left;
+      padding: 0 16px;
+      font-size: clamp(40px, 10vw, 64px);
+      margin-top: 24px;
+    }
+  }
+
+  &__divider {
+    width: calc(100% - 160px);
+    margin: 24px 80px 0;
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+
+    @media (max-width: 768px) {
+      width: calc(100% - 32px);
+      margin: 20px 16px 0;
+    }
+  }
+
+  &__spacer {
+    flex: 1;
+  }
+
+  &__explore {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    justify-content: flex-end;
+    padding: 16px 80px 32px;
+    color: $cream;
+    font-family: $font-serif;
+    font-size: 24px;
+    line-height: 24px;
+
+    @media (max-width: 768px) {
+      justify-content: center;
+      padding: 16px 16px 24px;
+    }
+  }
+
+  &__mouse {
+    width: 36px;
+    height: 56px;
+    border: 2px solid currentColor;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  &__mouseArrow {
+    width: 16px;
+    height: 16px;
+    color: $white;
+    animation: arrowBounce 1.4s ease-in-out infinite;
+  }
+}
+
+@keyframes arrowBounce {
+
+  0%,
+  100% {
+    transform: translateY(-3px);
+    opacity: 0.6;
+  }
+
+  50% {
+    transform: translateY(3px);
+    opacity: 1;
+  }
+}

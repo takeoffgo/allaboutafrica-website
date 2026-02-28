@@ -1,6 +1,6 @@
 import React from "react";
 import moment from "moment";
-import styles from "./itinerary.module.scss";
+import styles from "./InfoBar.module.scss";
 import type { GetQuoteQuery } from "~/lib/api/jambo";
 
 type User = NonNullable<GetQuoteQuery["quote"]>["user"];

@@ -1,0 +1,87 @@
+@use '../../styles/tokens' as *;
+
+:global(body) {
+  background-color: $cream;
+  margin: 0;
+}
+
+.page {
+  max-width: 1600px;
+  margin: 0 auto;
+  background-color: $cream;
+  color: $charcoal;
+  font-family: $font-sans;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+// ─── Travel Documents ─────────────────────────────────────────────────────────
+.docs {
+  padding: 0 80px 40px;
+
+  @media (max-width: 768px) {
+    padding: 0 16px 32px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba($charcoal, 0.2);
+    font-family: $font-sans;
+    font-size: 14px;
+    color: $charcoal;
+
+    svg {
+      width: 18px;
+      height: 18px;
+      stroke: $charcoal;
+      fill: none;
+      flex-shrink: 0;
+    }
+  }
+}
+
+// ─── Map section ─────────────────────────────────────────────────────────────
+.map {
+  width: 100%;
+  height: 500px;
+  background-color: #d0cbb8;
+  position: relative;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    height: 320px;
+  }
+
+  &__placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba($charcoal, 0.4);
+    font-family: $font-sans;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  :global(.mapboxgl-map) {
+    width: 100% !important;
+    height: 100% !important;
+  }
+}

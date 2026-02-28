@@ -1,0 +1,71 @@
+@use '../../styles/tokens' as *;
+
+.infoBar {
+  background-color: $cream;
+  border-top: 1px solid $charcoal;
+  padding: 28px 80px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  position: relative;
+
+  // Decorative bottom bar (right half)
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 50%;
+    height: 8px;
+    background-color: $charcoal;
+  }
+
+  @media (max-width: 768px) {
+    padding: 20px 16px;
+    grid-template-columns: 1fr;
+    gap: 20px;
+
+    &::after {
+      display: none;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $charcoal;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__label {
+    font-family: $font-sans;
+    font-size: 11px;
+    font-weight: 100;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: $charcoal;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  &__value {
+    font-family: $font-sans;
+    font-size: 16px;
+    line-height: 1.4;
+    color: $charcoal;
+  }
+}

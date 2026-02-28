@@ -37,16 +37,15 @@ export async function loader({ params, context }: Route.LoaderArgs) {
     fetchPolicy: "network-only",
     variables: { key },
   });
-  return { quote: res.data, key: key! };
+  return { quote: res.data };
 }
 
 export default function Page({ loaderData }: Route.ComponentProps) {
-  const key = loaderData!.key;
   const data = loaderData!.quote;
 
   if (!data?.quote) {
     return null;
   }
 
-  return <ItineraryPage data={data} quoteKey={key} />;
+  return <ItineraryPage data={data} />;
 }

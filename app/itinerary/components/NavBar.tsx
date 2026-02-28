@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./itinerary.module.scss";
+import styles from "./NavBar.module.scss";
 
 // AAA logo SVG (white wordmark version for hero)
 const AaaLogoWhite = () => (

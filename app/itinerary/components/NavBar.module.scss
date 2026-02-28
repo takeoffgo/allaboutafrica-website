@@ -1,0 +1,95 @@
+@use '../../styles/tokens' as *;
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 80px;
+  height: 122px;
+  position: relative;
+  z-index: 10;
+
+  @media (max-width: 768px) {
+    padding: 0 16px;
+    height: 74px;
+  }
+
+  &__logo {
+    display: flex;
+    color: $cream;
+    align-items: center;
+
+    img {
+      height: 56px;
+      width: auto;
+
+      @media (max-width: 768px) {
+        height: 40px;
+      }
+    }
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  &__link {
+    font-family: $font-sans;
+    font-size: 12px;
+    font-weight: 100;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $white;
+    cursor: pointer;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &--active {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+  }
+
+  &__cta {
+    background: transparent;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 20px;
+    height: 40px;
+    border: 1px solid $white;
+    color: $white;
+    font-family: $font-sans;
+    font-size: 12px;
+    font-weight: 100;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition:
+      background-color 0.2s,
+      color 0.2s;
+    white-space: nowrap;
+
+    &:hover {
+      background-color: $white;
+      color: $charcoal;
+    }
+
+    @media (max-width: 768px) {
+      padding: 0 16px;
+      font-size: 11px;
+    }
+  }
+}

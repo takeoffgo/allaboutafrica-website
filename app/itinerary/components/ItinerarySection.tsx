@@ -1,8 +1,8 @@
 import React from "react";
 import moment from "moment-timezone";
-import styles from "./itinerary.module.scss";
+import styles from "./ItinerarySection.module.scss";
 import type { GetQuoteQuery } from "~/lib/api/jambo";
-import { mediaUrl } from "../helpers";
+import { mediaUrl, splitOrdinal } from "../helpers";
 
 const MapPinIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" strokeWidth={1.5} xmlns="http://www.w3.org/2000/svg">
@@ -30,16 +30,6 @@ const parseBlock = (block: string): { label: string | null; body: string } => {
     return { label: firstLine, body: lines.slice(1).join("\n").trim() };
   }
   return { label: null, body: block };
-};
-
-// Returns the day-of-month number and its ordinal suffix separately so we can
-// render the suffix as a <sup>.
-const splitOrdinal = (date: string): { day: string; suffix: string; prefix: string } => {
-  const m = moment.utc(date);
-  const day = m.format("D");
-  const suffix = m.format("Do").slice(day.length);
-  const prefix = m.format("ddd MMM");
-  return { day, suffix, prefix };
 };
 
 type Props = {
@@ -115,7 +105,6 @@ const ItinerarySection: React.FC<Props> = ({ data }) => {
             <div className={styles.itinerary__imageCol}>
               <div className={styles.itinerary__photo}>
                 {photoHash ? (
-                  // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={mediaUrl(photoHash, { w: 800, h: 900 })}
                     alt={locationName ?? ""}
@@ -133,12 +122,11 @@ const ItinerarySection: React.FC<Props> = ({ data }) => {
               </div>
             </div>
 
-            {/* Right: day content — centred flex column */}
+            {/* Right: day content */}
             <div className={styles.itinerary__contentCol}>
               {/* Mobile photo */}
               {photoHash && (
                 <div className={styles.day__mobilePhoto}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={mediaUrl(photoHash, { w: 400, h: 200 })} alt={locationName ?? ""} loading="lazy" />
                 </div>
               )}
@@ -150,7 +138,6 @@ const ItinerarySection: React.FC<Props> = ({ data }) => {
                   {dateNode}
                 </div>
 
-                {/* Divider */}
                 <hr className={styles.day__divider} />
 
                 {/* Location */}
@@ -158,7 +145,6 @@ const ItinerarySection: React.FC<Props> = ({ data }) => {
                   <h3 className={styles.day__location}>{locationName}</h3>
                 )}
 
-                {/* Divider */}
                 <hr className={styles.day__divider} />
 
                 {/* Activity blocks */}

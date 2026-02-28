@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import styles from "./itinerary.module.scss";
+import styles from "./SectionAccordion.module.scss";
 
 const ChevronIcon = () => (
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" strokeWidth={1.5}>

@@ -1,21 +1,31 @@
 import moment from "moment-timezone";
 import type { GetQuoteQuery } from "../lib/api/jambo";
-// import { MapMarker } from "../components/Map";
 
-const queryString = (params: any) =>
+const queryString = (params: Record<string, string | number>) =>
   Object.keys(params)
-    .map((key) => [key, params[key]].map(encodeURIComponent).join("="))
+    .map((key) => [key, String(params[key])].map(encodeURIComponent).join("="))
     .join("&");
 
-export const mediaUrl = (hash: string, params?: any): string =>
+export const mediaUrl = (hash: string, params?: Record<string, string | number>): string =>
   hash
-    ? `https://cdn.takeoffgo.com/${hash}${
-        params ? `?${queryString(params)}` : ""
-      }`
+    ? `https://cdn.takeoffgo.com/${hash}${params ? `?${queryString(params)}` : ""}`
     : "";
 
+// Splits a date into its day number, ordinal suffix, and a formatted prefix.
+// prefixFormat defaults to "ddd MMM" (e.g. "Mon Jan"); pass "MMM" for lodging cards.
+export const splitOrdinal = (
+  date: string,
+  prefixFormat = "ddd MMM"
+): { day: string; suffix: string; prefix: string } => {
+  const m = moment.utc(date);
+  const day = m.format("D");
+  const suffix = m.format("Do").slice(day.length);
+  const prefix = m.format(prefixFormat);
+  return { day, suffix, prefix };
+};
+
 export const sentenceCase = (input: string) =>
-  input.substr(0, 1).toUpperCase() + input.substr(1);
+  input.substring(0, 1).toUpperCase() + input.substring(1);
 
 export const toSentence = (input: string[]) =>
   input
@@ -28,7 +38,7 @@ export const toSentence = (input: string[]) =>
               index === 0 ? sentenceCase(currentValue) : currentValue,
               index === array.length - 2 ? " and " : ", ",
             ].join(""),
-          "",
+          ""
         )
         .slice(0, -2)
     : null;
@@ -47,40 +57,3 @@ export const extractSortedFlights = (data: GetQuoteQuery) => {
     }))
     .sort((a, b) => a.departureDate.diff(b.departureDate));
 };
-
-// export const extractPoints = (data: GetQuoteQuery): MapMarker[] => {
-//   const airports =
-//     data.quote?.trip?.tripFlights.nodes
-//       .map((ent) => [ent?.departureAirport, ent?.arrivalAirport])
-//       .reduce((p, c) => [...p, ...c], [])
-//       .filter(
-//         (ent, idx, arr) =>
-//           arr.indexOf(arr.find((a) => a?.id === ent?.id)) === idx,
-//       ) ?? [];
-//
-//   return (
-//     data.quote?.accommodation?.nodes
-//       .map((ent) => ent?.property)
-//       .filter((ent) => !!ent)
-//       .filter((prop) => prop?.latitude && prop?.longitude)
-//       .map((prop) => ({
-//         id: prop?.id,
-//         type: "property",
-//         lat: prop?.latitude as number,
-//         lng: prop?.longitude as number,
-//         title: prop?.name ?? "",
-//         body: prop?.summary ?? "",
-//         icon: "bed",
-//       })) || []
-//   ).concat(
-//     airports.map((ap) => ({
-//       id: ap?.iata || ap?.icao,
-//       type: "airport",
-//       lat: ap?.latitude as number,
-//       lng: ap?.longitude as number,
-//       title: `Airport - ${ap?.iata || ap?.icao}`,
-//       body: [ap?.city, ap?.country].join(", "),
-//       icon: "plane",
-//     })),
-//   );
-// };

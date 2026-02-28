@@ -1,9 +1,8 @@
 import React from "react";
 import moment from "moment-timezone";
-import styles from "./itinerary.module.scss";
-import _ from "lodash";
+import styles from "./LodgingSection.module.scss";
 import type { GetQuoteQuery } from "~/lib/api/jambo";
-import { mediaUrl } from "../helpers";
+import { mediaUrl, splitOrdinal } from "../helpers";
 
 const MapPinIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" strokeWidth={1.5} xmlns="http://www.w3.org/2000/svg">
@@ -13,14 +12,6 @@ const MapPinIcon = () => (
       d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
   </svg>
 );
-
-const splitOrdinal = (date: string) => {
-  const m = moment.utc(date);
-  const day = m.format("D");
-  const suffix = m.format("Do").slice(day.length);
-  const prefix = m.format("MMM");
-  return { day, suffix, prefix };
-};
 
 type AccomNode = NonNullable<NonNullable<GetQuoteQuery["quote"]>["accommodation"]>["nodes"][0];
 type Variant = "col3" | "col2" | "col1";
@@ -40,8 +31,9 @@ const PropertyCard: React.FC<{ item: CardItem; variant: Variant }> = ({ item, va
     ? mediaUrl(property.heroMedia.hash, variant === "col1" ? { w: 800, h: 600 } : { w: 600, h: 360 })
     : null;
 
-  const firstOrd = firstDate ? splitOrdinal(firstDate) : null;
-  const lastOrd = lastDate ? splitOrdinal(lastDate) : null;
+  // Lodging dates use "MMM" prefix (no day-of-week)
+  const firstOrd = firstDate ? splitOrdinal(firstDate, "MMM") : null;
+  const lastOrd = lastDate ? splitOrdinal(lastDate, "MMM") : null;
 
   const isSameDay = firstDate && lastDate && firstDate === lastDate;
 
@@ -58,7 +50,6 @@ const PropertyCard: React.FC<{ item: CardItem; variant: Variant }> = ({ item, va
     <div className={`${styles.lodgingCard} ${styles[`lodgingCard--${variant}`]}`}>
       <div className={styles.lodgingCard__imageWrap}>
         {photoUrl ? (
-          // eslint-disable-next-line @next/next/no-img-element
           <img src={photoUrl} alt={property.name ?? ""} loading="lazy" />
         ) : (
           <div className={styles.lodgingCard__imageFallback} />
@@ -92,13 +83,22 @@ type Props = {
 const LodgingSection: React.FC<Props> = ({ accommodation, data }) => {
   const quote = data.quote!;
   const days = quote.days?.nodes ?? [];
-  const daysByAccom = _.groupBy(days, (d) => d?.accommodationId);
 
-  // Deduplicate by property ID, keeping the accommodation reference
-  const uniqueAccoms = _(accommodation)
-    .filter((a) => !!a?.property)
-    .uniqBy((a) => a?.property?.id)
-    .value();
+  // Group days by accommodation ID (native, no lodash)
+  const daysByAccom: Record<string, typeof days> = {};
+  for (const day of days) {
+    if (!day?.accommodationId) continue;
+    (daysByAccom[day.accommodationId] ??= []).push(day);
+  }
+
+  // Deduplicate by property ID (native, no lodash)
+  const seen = new Set<string>();
+  const uniqueAccoms = accommodation.filter((a) => {
+    if (!a?.property) return false;
+    if (seen.has(a.property.id)) return false;
+    seen.add(a.property.id);
+    return true;
+  });
 
   if (uniqueAccoms.length === 0) return null;
 
@@ -128,7 +128,7 @@ const LodgingSection: React.FC<Props> = ({ accommodation, data }) => {
     };
   });
 
-  // Split into rows: fill rows of 3, last row gets remainder (1 or 2)
+  // Fill rows of 3; the last row gets whatever remains (1 or 2)
   const rows: CardItem[][] = [];
   let i = 0;
   while (i < items.length) {

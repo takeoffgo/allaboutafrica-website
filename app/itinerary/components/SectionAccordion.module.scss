@@ -1,0 +1,54 @@
+@use '../../styles/tokens' as *;
+
+.section {
+  border-top: 1px solid $charcoal;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 80px;
+    cursor: pointer;
+    user-select: none;
+
+    @media (max-width: 768px) {
+      padding: 16px 16px;
+    }
+  }
+
+  &__title {
+    font-family: $font-serif;
+    font-size: clamp(28px, 3vw, 47px);
+    font-weight: 100;
+    color: $charcoal;
+    line-height: 1;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  &__chevron {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+
+    &--open {
+      transform: rotate(180deg);
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+      stroke: $charcoal;
+      fill: none;
+    }
+  }
+
+  &__body {
+    // overflow: hidden removed — it breaks position: sticky on child elements.
+    // Collapsible sections use display: none/block so overflow clipping is not needed.
+  }
+}

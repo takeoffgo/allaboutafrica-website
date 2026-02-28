@@ -1,0 +1,19 @@
+// ─── Shared design tokens ─────────────────────────────────────────────────────
+// Import with: @use '../../styles/tokens' as *;
+
+// Colours
+$cream: #ede8dc;
+$cream-dark: #d9d3c4;
+$charcoal: #1e1e1e;
+$charcoal-mid: #3a3a3a;
+$white: #ffffff;
+$sage: #7a9b6a;
+
+// Typography
+$font-serif: "Copernicus New Cond", Georgia, serif;
+$font-sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+// Layout
+$bp-mobile: 768px;
+$pad-desktop: 80px;
+$pad-mobile: 16px;

@@ -1,0 +1,75 @@
+@use '../../styles/tokens' as *;
+
+.flights {
+  padding: 0 80px 40px;
+
+  @media (max-width: 768px) {
+    padding: 0 16px 32px;
+  }
+
+  &__empty {
+    font-family: $font-sans;
+    font-size: 14px;
+    color: $charcoal;
+    opacity: 0.6;
+    font-style: italic;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba($charcoal, 0.2);
+
+    &:first-child {
+      border-top: 1px solid rgba($charcoal, 0.2);
+    }
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__airport {
+    font-family: $font-sans;
+    font-size: 13px;
+    line-height: 1.5;
+    color: $charcoal;
+
+    &--right {
+      text-align: right;
+
+      @media (max-width: 768px) {
+        text-align: left;
+      }
+    }
+  }
+
+  &__iata {
+    font-family: $font-serif;
+    font-size: 28px;
+    font-weight: 100;
+    text-transform: uppercase;
+  }
+
+  &__arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-family: $font-sans;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: $charcoal;
+    opacity: 0.7;
+
+    svg {
+      width: 48px;
+      stroke: $charcoal;
+      fill: none;
+    }
+  }
+}

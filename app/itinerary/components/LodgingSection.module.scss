@@ -1,0 +1,160 @@
+@use '../../styles/tokens' as *;
+
+.lodging {
+  &__list {
+    padding: 32px 80px 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @media (max-width: 768px) {
+      padding: 24px 16px 40px;
+      gap: 16px;
+    }
+  }
+
+  &__row {
+    display: flex;
+    gap: 24px;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+}
+
+.lodgingCard {
+  background-color: $white;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  // ── Horizontal layout for lone cards ──
+  &--col1 {
+    flex-direction: row;
+    min-height: 400px;
+    flex: none;
+    width: 100%;
+
+    .lodgingCard__imageWrap {
+      width: 49%;
+      height: auto;
+      flex-shrink: 0;
+    }
+
+    .lodgingCard__body {
+      padding: 40px 48px;
+      justify-content: center;
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      min-height: unset;
+
+      .lodgingCard__imageWrap {
+        width: 100%;
+        height: 240px;
+      }
+
+      .lodgingCard__body {
+        padding: 28px 24px;
+      }
+    }
+  }
+
+  &__imageWrap {
+    width: 100%;
+    height: 260px;
+    overflow: hidden;
+    flex-shrink: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  &__imageFallback {
+    width: 100%;
+    height: 100%;
+    background: $cream-dark;
+  }
+
+  &__body {
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1;
+  }
+
+  &__locationBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid $charcoal;
+    border-radius: 100px;
+    padding: 6px 14px 6px 10px;
+    font-family: $font-sans;
+    font-size: 11px;
+    font-weight: 100;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $charcoal;
+    width: fit-content;
+
+    svg {
+      width: 14px;
+      height: 14px;
+      stroke: $charcoal;
+      fill: none;
+      flex-shrink: 0;
+    }
+  }
+
+  &__date {
+    font-family: $font-serif;
+    font-size: 24px;
+    line-height: 1;
+    color: $charcoal;
+    margin: 0;
+
+    sup {
+      font-size: 14px;
+      vertical-align: super;
+    }
+  }
+
+  &__name {
+    font-family: $font-serif;
+    font-size: clamp(28px, 3vw, 40px);
+    font-weight: 100;
+    line-height: 1;
+    color: $charcoal;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+    margin: 0;
+  }
+
+  &__descLabel {
+    font-family: $font-sans;
+    font-size: 11px;
+    font-weight: 100;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $charcoal;
+    margin: 0;
+  }
+
+  &__description {
+    font-family: $font-serif;
+    font-size: 18px;
+    line-height: 1.5;
+    color: $charcoal;
+    margin: 0;
+  }
+}
