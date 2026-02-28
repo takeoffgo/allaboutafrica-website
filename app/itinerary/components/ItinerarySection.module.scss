@@ -16,7 +16,6 @@
   &__dayRow {
     display: flex;
     align-items: flex-start;
-    border-top: 1px solid $charcoal;
 
     &:first-child {
       border-top: none;
@@ -81,7 +80,6 @@
     // 120svh ensures the row is always 20svh taller than the image (100svh),
     // giving the sticky element plenty of room and exaggerating the scroll effect.
     min-height: 120svh;
-    border-left: 1px solid $charcoal;
     display: flex;
     align-items: center;
 
@@ -90,6 +88,16 @@
       border-left: none;
       width: 100%;
     }
+  }
+
+  // When there is no image, center the content column
+  &__dayRow--noImage {
+    justify-content: center;
+  }
+
+  &__dayRow--noImage &__contentCol {
+    border-left: none;
+    max-width: 720px;
   }
 }
 

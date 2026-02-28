@@ -5,7 +5,15 @@ mutation AcceptQuote(
   $date: String!
   $source: String!
 ) {
-  acceptQuote(input: { key: $key, name: $name, email: $email, source: $source, date: $date }) {
+  acceptQuote(
+    input: {
+      key: $key
+      name: $name
+      email: $email
+      source: $source
+      date: $date
+    }
+  ) {
     success
     message
   }
@@ -126,6 +134,10 @@ query GetQuote($key: String!) {
           longitude
           heroMedia {
             hash
+          }
+          destination {
+            id
+            name
           }
         }
       }

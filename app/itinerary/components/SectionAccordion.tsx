@@ -4,7 +4,11 @@ import styles from "./SectionAccordion.module.scss";
 
 const ChevronIcon = () => (
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" strokeWidth={1.5}>
-    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+    />
   </svg>
 );
 
@@ -24,25 +28,30 @@ const SectionAccordion: React.FC<Props> = ({
   children,
 }) => {
   const handleClick = () => {
+    console.log('ontoggle')
     if (showChevron) onToggle();
   };
 
   return (
     <div className={styles.section}>
       <div
-        className={styles.section__header}
+        className={
+          styles.section__header + (showChevron
+            ? ""
+            : ` ${styles.section__header__fixed}`)
+        }
         onClick={handleClick}
         role={showChevron ? "button" : undefined}
         tabIndex={showChevron ? 0 : undefined}
-        onKeyDown={showChevron ? (e) => e.key === "Enter" && handleClick() : undefined}
-        style={{ cursor: showChevron ? "pointer" : "default" }}
+        onKeyDown={
+          showChevron ? (e) => e.key === "Enter" && handleClick() : undefined
+        }
       >
         <h2 className={styles.section__title}>{title}</h2>
         {showChevron && (
           <span
-            className={`${styles.section__chevron} ${
-              isOpen ? styles["section__chevron--open"] : ""
-            }`}
+            className={`${styles.section__chevron} ${isOpen ? styles["section__chevron--open"] : ""
+              }`}
           >
             <ChevronIcon />
           </span>

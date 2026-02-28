@@ -37467,7 +37467,7 @@ export type GetQuoteQueryVariables = Exact<{
 }>;
 
 
-export type GetQuoteQuery = { __typename?: 'Query', quote?: { __typename?: 'QuotePublic', id?: any | null, status?: number | null, start?: string | null, duration?: number | null, travellerCount?: number | null, total?: any | null, baseCurrency?: string | null, inclusions?: string | null, exclusions?: string | null, expires?: string | null, locked?: string | null, hero?: { __typename?: 'QuoteHero', title?: string | null, subtitle?: string | null, image?: { __typename?: 'MediaItem', hash?: string | null } | null } | null, user?: { __typename?: 'User', lastName?: string | null, firstName?: string | null, email?: string | null, phone?: string | null, genderPreposition?: string | null } | null, trip?: { __typename?: 'Trip', name?: string | null, agency?: { __typename?: 'Agency', name?: string | null, logo?: { __typename?: 'MediaItem', hash?: string | null } | null } | null, agencyMember?: { __typename?: 'AgencyMember', lastName?: string | null, firstName?: string | null, phone?: string | null, email?: string | null, genderPreposition?: string | null } | null, tripFlights: { __typename?: 'TripFlightsConnection', nodes: Array<{ __typename?: 'TripFlight', id: any, arrival: string, carrier?: string | null, departure: string, number?: string | null, notes?: string | null, departureAirport?: { __typename?: 'Airport', id: any, latitude: number, longitude: number, iata?: string | null, icao?: string | null, timezone?: string | null, city?: string | null, country?: { __typename?: 'Country', name?: string | null } | null } | null, arrivalAirport?: { __typename?: 'Airport', id: any, latitude: number, longitude: number, iata?: string | null, icao?: string | null, timezone?: string | null, city?: string | null, country?: { __typename?: 'Country', name?: string | null } | null } | null } | null> } } | null, days: { __typename?: 'QuoteDaysConnection', nodes: Array<{ __typename?: 'QuoteDay', id: any, date?: string | null, sortOrder: number, activitySummary?: string | null, activityDetail?: string | null, accommodationId?: any | null, quoteDayDestinationsByDayId: { __typename?: 'QuoteDayDestinationsConnection', nodes: Array<{ __typename?: 'QuoteDayDestination', sortOrder: number, destination?: { __typename?: 'Destination', id: any, name?: string | null } | null } | null> } } | null> }, accommodation: { __typename?: 'QuoteAccommodationDetailsConnection', nodes: Array<{ __typename?: 'QuoteAccommodationDetail', id: any, sortOrder: number, basis?: string | null, confirmation?: string | null, beverageInclusions?: Array<string | null> | null, foodInclusions?: Array<string | null> | null, roomType?: string | null, property?: { __typename?: 'Property', id: any, name?: string | null, summary?: string | null, latitude?: number | null, longitude?: number | null, heroMedia?: { __typename?: 'MediaItem', hash?: string | null } | null } | null } | null> }, legalDocuments: { __typename?: 'QuoteLegalDocumentsConnection', nodes: Array<{ __typename?: 'QuoteLegalDocument', id: any, sortOrder: number, legalDocument?: { __typename?: 'LegalDocument', id: any, name: string } | null } | null> } } | null };
+export type GetQuoteQuery = { __typename?: 'Query', quote?: { __typename?: 'QuotePublic', id?: any | null, status?: number | null, start?: string | null, duration?: number | null, travellerCount?: number | null, total?: any | null, baseCurrency?: string | null, inclusions?: string | null, exclusions?: string | null, expires?: string | null, locked?: string | null, hero?: { __typename?: 'QuoteHero', title?: string | null, subtitle?: string | null, image?: { __typename?: 'MediaItem', hash?: string | null } | null } | null, user?: { __typename?: 'User', lastName?: string | null, firstName?: string | null, email?: string | null, phone?: string | null, genderPreposition?: string | null } | null, trip?: { __typename?: 'Trip', name?: string | null, agency?: { __typename?: 'Agency', name?: string | null, logo?: { __typename?: 'MediaItem', hash?: string | null } | null } | null, agencyMember?: { __typename?: 'AgencyMember', lastName?: string | null, firstName?: string | null, phone?: string | null, email?: string | null, genderPreposition?: string | null } | null, tripFlights: { __typename?: 'TripFlightsConnection', nodes: Array<{ __typename?: 'TripFlight', id: any, arrival: string, carrier?: string | null, departure: string, number?: string | null, notes?: string | null, departureAirport?: { __typename?: 'Airport', id: any, latitude: number, longitude: number, iata?: string | null, icao?: string | null, timezone?: string | null, city?: string | null, country?: { __typename?: 'Country', name?: string | null } | null } | null, arrivalAirport?: { __typename?: 'Airport', id: any, latitude: number, longitude: number, iata?: string | null, icao?: string | null, timezone?: string | null, city?: string | null, country?: { __typename?: 'Country', name?: string | null } | null } | null } | null> } } | null, days: { __typename?: 'QuoteDaysConnection', nodes: Array<{ __typename?: 'QuoteDay', id: any, date?: string | null, sortOrder: number, activitySummary?: string | null, activityDetail?: string | null, accommodationId?: any | null, quoteDayDestinationsByDayId: { __typename?: 'QuoteDayDestinationsConnection', nodes: Array<{ __typename?: 'QuoteDayDestination', sortOrder: number, destination?: { __typename?: 'Destination', id: any, name?: string | null } | null } | null> } } | null> }, accommodation: { __typename?: 'QuoteAccommodationDetailsConnection', nodes: Array<{ __typename?: 'QuoteAccommodationDetail', id: any, sortOrder: number, basis?: string | null, confirmation?: string | null, beverageInclusions?: Array<string | null> | null, foodInclusions?: Array<string | null> | null, roomType?: string | null, property?: { __typename?: 'Property', id: any, name?: string | null, summary?: string | null, latitude?: number | null, longitude?: number | null, heroMedia?: { __typename?: 'MediaItem', hash?: string | null } | null, destination?: { __typename?: 'Destination', id: any, name?: string | null } | null } | null } | null> }, legalDocuments: { __typename?: 'QuoteLegalDocumentsConnection', nodes: Array<{ __typename?: 'QuoteLegalDocument', id: any, sortOrder: number, legalDocument?: { __typename?: 'LegalDocument', id: any, name: string } | null } | null> } } | null };
 
 export type TrackQuoteViewMutationVariables = Exact<{
   ip: Scalars['String']['input'];
@@ -37550,6 +37550,9 @@ export function useGetDestinationLazyQuery(baseOptions?: Apollo.LazyQueryHookOpt
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<GetDestinationQuery, GetDestinationQueryVariables>(GetDestinationDocument, options);
         }
+// @ts-ignore
+export function useGetDestinationSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetDestinationQuery, GetDestinationQueryVariables>): Apollo.UseSuspenseQueryResult<GetDestinationQuery, GetDestinationQueryVariables>;
+export function useGetDestinationSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetDestinationQuery, GetDestinationQueryVariables>): Apollo.UseSuspenseQueryResult<GetDestinationQuery | undefined, GetDestinationQueryVariables>;
 export function useGetDestinationSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetDestinationQuery, GetDestinationQueryVariables>) {
           const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
           return Apollo.useSuspenseQuery<GetDestinationQuery, GetDestinationQueryVariables>(GetDestinationDocument, options);
@@ -37633,6 +37636,9 @@ export function useGetInvoiceLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<GetInvoiceQuery, GetInvoiceQueryVariables>(GetInvoiceDocument, options);
         }
+// @ts-ignore
+export function useGetInvoiceSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetInvoiceQuery, GetInvoiceQueryVariables>): Apollo.UseSuspenseQueryResult<GetInvoiceQuery, GetInvoiceQueryVariables>;
+export function useGetInvoiceSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetInvoiceQuery, GetInvoiceQueryVariables>): Apollo.UseSuspenseQueryResult<GetInvoiceQuery | undefined, GetInvoiceQueryVariables>;
 export function useGetInvoiceSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetInvoiceQuery, GetInvoiceQueryVariables>) {
           const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
           return Apollo.useSuspenseQuery<GetInvoiceQuery, GetInvoiceQueryVariables>(GetInvoiceDocument, options);
@@ -37711,6 +37717,9 @@ export function useGetLegalDocumentLazyQuery(baseOptions?: Apollo.LazyQueryHookO
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<GetLegalDocumentQuery, GetLegalDocumentQueryVariables>(GetLegalDocumentDocument, options);
         }
+// @ts-ignore
+export function useGetLegalDocumentSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetLegalDocumentQuery, GetLegalDocumentQueryVariables>): Apollo.UseSuspenseQueryResult<GetLegalDocumentQuery, GetLegalDocumentQueryVariables>;
+export function useGetLegalDocumentSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetLegalDocumentQuery, GetLegalDocumentQueryVariables>): Apollo.UseSuspenseQueryResult<GetLegalDocumentQuery | undefined, GetLegalDocumentQueryVariables>;
 export function useGetLegalDocumentSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetLegalDocumentQuery, GetLegalDocumentQueryVariables>) {
           const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
           return Apollo.useSuspenseQuery<GetLegalDocumentQuery, GetLegalDocumentQueryVariables>(GetLegalDocumentDocument, options);
@@ -37792,6 +37801,9 @@ export function useGetPropertyLazyQuery(baseOptions?: Apollo.LazyQueryHookOption
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<GetPropertyQuery, GetPropertyQueryVariables>(GetPropertyDocument, options);
         }
+// @ts-ignore
+export function useGetPropertySuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetPropertyQuery, GetPropertyQueryVariables>): Apollo.UseSuspenseQueryResult<GetPropertyQuery, GetPropertyQueryVariables>;
+export function useGetPropertySuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetPropertyQuery, GetPropertyQueryVariables>): Apollo.UseSuspenseQueryResult<GetPropertyQuery | undefined, GetPropertyQueryVariables>;
 export function useGetPropertySuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetPropertyQuery, GetPropertyQueryVariables>) {
           const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
           return Apollo.useSuspenseQuery<GetPropertyQuery, GetPropertyQueryVariables>(GetPropertyDocument, options);
@@ -37837,6 +37849,9 @@ export function useGetFeaturedPropertyLazyQuery(baseOptions?: Apollo.LazyQueryHo
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<GetFeaturedPropertyQuery, GetFeaturedPropertyQueryVariables>(GetFeaturedPropertyDocument, options);
         }
+// @ts-ignore
+export function useGetFeaturedPropertySuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetFeaturedPropertyQuery, GetFeaturedPropertyQueryVariables>): Apollo.UseSuspenseQueryResult<GetFeaturedPropertyQuery, GetFeaturedPropertyQueryVariables>;
+export function useGetFeaturedPropertySuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetFeaturedPropertyQuery, GetFeaturedPropertyQueryVariables>): Apollo.UseSuspenseQueryResult<GetFeaturedPropertyQuery | undefined, GetFeaturedPropertyQueryVariables>;
 export function useGetFeaturedPropertySuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetFeaturedPropertyQuery, GetFeaturedPropertyQueryVariables>) {
           const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
           return Apollo.useSuspenseQuery<GetFeaturedPropertyQuery, GetFeaturedPropertyQueryVariables>(GetFeaturedPropertyDocument, options);
@@ -38000,6 +38015,10 @@ export const GetQuoteDocument = gql`
           heroMedia {
             hash
           }
+          destination {
+            id
+            name
+          }
         }
       }
     }
@@ -38041,6 +38060,9 @@ export function useGetQuoteLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<G
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<GetQuoteQuery, GetQuoteQueryVariables>(GetQuoteDocument, options);
         }
+// @ts-ignore
+export function useGetQuoteSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetQuoteQuery, GetQuoteQueryVariables>): Apollo.UseSuspenseQueryResult<GetQuoteQuery, GetQuoteQueryVariables>;
+export function useGetQuoteSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetQuoteQuery, GetQuoteQueryVariables>): Apollo.UseSuspenseQueryResult<GetQuoteQuery | undefined, GetQuoteQueryVariables>;
 export function useGetQuoteSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetQuoteQuery, GetQuoteQueryVariables>) {
           const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
           return Apollo.useSuspenseQuery<GetQuoteQuery, GetQuoteQueryVariables>(GetQuoteDocument, options);

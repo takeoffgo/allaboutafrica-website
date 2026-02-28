@@ -1,18 +1,25 @@
-@use '../../styles/tokens' as *;
+@use "../../styles/tokens" as *;
 
 .section {
-  border-top: 1px solid $charcoal;
-
   &__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 24px 80px;
+    padding: 24px 0px;
+    margin: 0px 80px;
     cursor: pointer;
     user-select: none;
+    border-top: 1px solid $charcoal;
 
     @media (max-width: 768px) {
       padding: 16px 16px;
+    }
+
+    &__fixed {
+      cursor: default;
+      border-bottom: 1px solid $charcoal;
+      // margin: 24px 80px;
+      margin-bottom: 24px;
     }
   }
 
@@ -24,6 +31,8 @@
     line-height: 1;
     text-transform: uppercase;
     margin: 0;
+    text-box-trim: trim-both;
+    text-box-edge: cap alphabetic;
   }
 
   &__chevron {

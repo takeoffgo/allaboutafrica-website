@@ -101,20 +101,8 @@ const ItinerarySection: React.FC<Props> = ({ data }) => {
           .flatMap((d) => d?.quoteDayDestinationsByDayId?.nodes ?? [])
           .map((d) => d?.destination?.name)
           .filter(Boolean) as string[];
-        {
-          /* const locationName = */
-        }
-        {
-          /*   allDestNames.length > 0 */
-        }
-        {
-          /*     ? [...new Set(allDestNames)].join(", ") */
-        }
-        {
-          /*     : null; */
-        }
         const locationName =
-          allDestNames.length > 0 ? allDestNames.pop() : null;
+          allDestNames.length > 0 ? [...new Set(allDestNames)].pop() : null;
 
         // Photo from the last day's accommodation
         const accom = quote.accommodation?.nodes.find(
@@ -132,34 +120,30 @@ const ItinerarySection: React.FC<Props> = ({ data }) => {
           .filter(Boolean)
           .map(parseBlock);
 
+        const rowClass = photoHash
+          ? styles.itinerary__dayRow
+          : `${styles.itinerary__dayRow} ${styles["itinerary__dayRow--noImage"]}`;
+
         return (
-          <div key={firstDay?.id} className={styles.itinerary__dayRow}>
-            {/* Left: sticky image */}
-            <div className={styles.itinerary__imageCol}>
-              <div className={styles.itinerary__photo}>
-                {photoHash ? (
+          <div key={firstDay?.id} className={rowClass}>
+            {/* Left: sticky image — omitted entirely when no photo */}
+            {photoHash && (
+              <div className={styles.itinerary__imageCol}>
+                <div className={styles.itinerary__photo}>
                   <img
                     src={mediaUrl(photoHash, { w: 800, h: 900 })}
                     alt={locationName ?? ""}
                     loading="lazy"
                   />
-                ) : (
-                  <div
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      background: "#d0cbb8",
-                    }}
-                  />
-                )}
-                {locationName && (
-                  <div className={styles.itinerary__photoLabel}>
-                    <MapPinIcon />
-                    {locationName}
-                  </div>
-                )}
+                  {locationName && (
+                    <div className={styles.itinerary__photoLabel}>
+                      <MapPinIcon />
+                      {locationName}
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Right: day content */}
             <div className={styles.itinerary__contentCol}>
@@ -185,10 +169,11 @@ const ItinerarySection: React.FC<Props> = ({ data }) => {
 
                 {/* Location */}
                 {locationName && (
-                  <h3 className={styles.day__location}>{locationName}</h3>
+                  <>
+                    <h3 className={styles.day__location}>{locationName}</h3>
+                    <hr className={styles.day__divider} />
+                  </>
                 )}
-
-                <hr className={styles.day__divider} />
 
                 {/* Activity blocks */}
                 <div className={styles.day__content}>
